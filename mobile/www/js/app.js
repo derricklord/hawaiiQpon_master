@@ -12,7 +12,8 @@ angular.module('your_app_name', [
   'your_app_name.views',
   'underscore',
   'angularMoment',
-  'ngCordova'
+  'ngCordova',
+    'ngMap'
 ])
 
 

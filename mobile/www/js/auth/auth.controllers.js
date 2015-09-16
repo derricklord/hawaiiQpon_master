@@ -3,8 +3,9 @@ angular.module('your_app_name.auth.controllers', [])
 
 .controller('WelcomeCtrl', function($scope, $state, $ionicModal){
     //Modified: Derrick - limited to food category
-	$scope.bgs = ["http://lorempixel.com/640/1136/food"];
+	//$scope.bgs = ["http://lorempixel.com/640/1136/food"];
 	//$scope.bgs = ["img/welcome-bg.jpeg"];
+    $scope.bgs= [];
 
 	$scope.facebookSignIn = function(){
 		console.log("doing facebook sign in");

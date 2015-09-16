@@ -1,5 +1,13 @@
 <ion-view view-title="Map View" class="shop-popular-view">
   <ion-content>
-      <div id="map" data-tap-disabled="true"></div> 
+          <map id="map" center="current-location" zoom="14">
+            <info-window position="current-location" visible="true">
+              <span>Your Current Location</span>
+            </info-window>
+              <div ng-repeat="coupon in coupons">
+               <marker ng-repeat="pos in coupon.locations" position="{{pos.loc.lat}}, {{pos.loc.long}}">
+               </marker>
+              </div>
+          </map>
   </ion-content>
 </ion-view>
