@@ -1,0 +1,29 @@
+{
+  "name": "coupon",
+  "version": "1.0.0",
+  "description": "Coupon",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Derrick A. Lord",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.0.0",
+    "bcryptjs": "^2.1.0",
+    "body-parser": "^1.12.4",
+    "errorhandler": "^1.3.6",
+    "express": "^4.12.4",
+    "gulp": "^3.8.11",
+    "jwt-simple": "^0.3.0",
+    "lodash": "^3.9.3",
+    "method-override": "^2.3.3",
+    "moment": "^2.10.3",
+    "mongoose": "^4.0.3",
+    "morgan": "^1.5.3",
+    "multer": "^0.1.8",
+    "path": "^0.11.14",
+    "querystring": "^0.2.0",
+    "request": "^2.55.0"
+  }  
+}

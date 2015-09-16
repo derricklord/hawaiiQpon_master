@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12" style="text-align:center;">
+        <img ng-src={{profile.picture}}  class="img-circle img-responsive" style="width:50px; height:50px; margin:auto;">
+        <h3>{{profile.displayName}}</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="lead">All Coupons</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="coupon in coupons">
+                <div class="pull-right">
+                    <i class="fa fa-tag tw_control" ui-sref="view({id: coupon._id})"></i>
+                    <i class="fa fa-edit tw_control" ui-sref="edit({id: coupon._id})"></i>
+                    <i class="fa fa-close tw_control" ng-click="delete(coupon._id)" ></i>
+                </div>
+                <h4>
+                    <i class="fa fa-tag pull-left fa-x2 tw_blue"></i> 
+                    <span ng-show="coupon.active" class="label label-success pull-left">Active</span>
+                    <a href="/api/coupons/{{coupon._id}}" >{{coupon.title}} </a>
+                </h4>
+                <small class="pull-right">Expires: {{coupon.expiration| date:'shortDate'}}</small>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-success" ui-sref="new">New Coupon</a>
+    </div>
+</div>

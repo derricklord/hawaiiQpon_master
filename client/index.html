@@ -1,0 +1,207 @@
+<!doctype html>
+<html ng-app="coupon">
+    <head>
+        <title>HawaiiQpon</title>       
+        <meta charset="utf-8">
+        <meta name='robots' content='noindex,follow' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css" >
+
+        <link rel="stylesheet" href="css/dropzone.css" >
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Josefin+Sans|Playfair+Display' type='text/css'>
+        <link rel='stylesheet' href='css/app.min.css' type='text/css' media='all' id='appmincss-css'/>
+        
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/lib/dropzone.js"></script>
+        
+        
+
+        
+    </head>
+    
+    <body  class="home page page-id-4 page-template-default" ng-controller="mainCtrl" ng-cloak>
+        <header class="site-header">
+               <div class="site-header__content">
+                     <div class="site-header__phone">
+                        <a href="tel:808-843-6000">
+                            <img src="/images/icons/icon_phone.png" alt="Phone"> 808.843.6000
+                        </a>
+                     </div>
+
+                     <nav class="site-header__social hide-for-medium-down">
+                          <ul>
+                              <li>
+                                  <a href="#" target="_blank">
+                                    <span class="fa-stack">
+                                      <i class="fa-circle fa-outer fa-stack-2x fa"></i>
+                                      <i class="fa-facebook fa-inner fa-stack-1x fa"></i>
+                                    </span>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" target="_blank">
+                                    <span class="fa-stack">
+                                      <i class="fa-circle fa-outer fa-stack-2x fa"></i>
+                                      <i class="fa-instagram fa-inner fa-stack-1x fa"></i>
+                                    </span>
+                                  </a>
+                            </li>
+                         </ul>        
+                    </nav><!-- .site-header__social -->
+
+                <nav class="site-header__menu top-bar" data-topbar>
+
+                    <header>
+                        <ul class="title-area">
+                          <li class="name"></li>
+
+                          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                        </ul><!-- .title-area -->
+                    </header><!-- .header-menu-header -->
+
+                  <section class="top-bar-section">
+                    <ul class="right" ng-if="!isAuthenticated()">
+                        <li  class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a ui-sref="login">Login</a>
+                        </li>
+                    </ul>
+                    <ul class="right" ng-if="isAuthenticated()">
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a ui-sref="home">Profile</a>
+                        </li>
+                        <!--
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a ui-sref="new">New Coupon</a>
+                        </li>
+                        --> 
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a ng-click="logout()">Logout</a>
+                        </li>
+                    </ul>
+                  </section><!-- .top-bar-section -->
+                </nav><!-- .site-header__menu -->
+
+                <div class="site-header__logo">
+                    <a href="/"><img src="/images/logo.png" alt="This Week Magazines" width=50% height=50%></a>
+                </div>
+             </div><!-- .site-header__content -->
+
+              <div class="site-header__border-1"></div>
+              <div class="site-header__border-2"></div>
+        </header><!-- .site-header -->
+
+
+        <section class="hero">
+          <div class="row">
+            <div class="column">
+
+            </div>
+          </div>
+        </section><!-- .site-hero -->
+
+        
+    <main class="site-main animated fadeIn">
+        <div class="row">
+            <div class="site-main__inner column">
+                <!-- Primary Application View -->
+                <ui-view></ui-view>
+            </div>
+        </div><!-- .site-main__inner -->
+    </main><!-- .site-main -->
+
+
+        <section class="testimonials">
+          <div class="row">
+
+            </div>
+          </div>
+        </section><!-- .testimonials -->
+
+        <footer class="site-footer">
+          <div class="row">
+            <div class="site-footer__content medium-10 column">
+              <div class="site-footer__connect">
+                <div class="site-footer__address"><a href="">274 Puuhale Rd. # 200, Honolulu, Hawai‘i 96819</a></div>
+
+                <div class="site-footer__phone"><a href="tel:">Ph. (808) 843-6000</a> &bull; Fax (808) 843-6090</div>
+
+                <div class="site-footer__email">
+                  <a href="">www.thisweekmagazines.com</a> <span>&bull;</span>
+                  <a href="">editor@thisweek.com</a> <span>&bull;</span>
+                  <a href="">sales@thisweek.com</a>
+                </div><!-- .site-footer__email -->
+              </div><!-- .site-footer__connect -->
+
+                <nav class="site-footer__menu">
+                    <ul id="menu-primary-menu-1" class="menu">
+                  <li id="menu-item-7" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7">
+                    <a href="http://thisweekhawaii.hd-dev.com/about-us/">About Us</a>
+                  </li>
+                  <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8">
+                    <a href="#">Publications</a>
+                  </li>
+                  <li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9">
+                    <a href="#">This Week Oahu TV</a>
+                  </li>
+                  <li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10">
+                    <a href="#">ThisWeekHawaii.com</a>
+                  </li>
+                  <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11">
+                    <a href="#">Services</a>
+                  </li>
+                  <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14">
+                    <a href="http://thisweekhawaii.hd-dev.com/contact-us/">Contact Us</a>
+                  </li>
+                </ul>		      
+              </nav><!-- .site-footer__menu -->
+
+                  <div class="site-footer__legal">
+                &copy;2015 This Week Magazines Hawaii. All Rights Reserved. A division of Hagadone Media Group.</div>
+              </div><!-- .site-footer__content -->
+
+            <div class="site-footer__logos medium-2 column">
+              <a href="/">
+                <img src="/images/logo.png" alt="This Week Magazines">
+              </a>
+              <a href="//hagadone.com" target="_blank">
+                <img src="/images/logo_hagadone-media.png" alt="Hagadone Marine Group">
+              </a>
+            </div><!-- .site-footer__logos -->
+          </div>
+        </footer><!-- .site-footer -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true&libraries=places&language=en-US" type="text/javascript"></script>
+        
+        <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>-->
+
+        
+        <script src="js/app.thisweek.min.js?ver=1.0.0"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/satellizer/satellizer.min.js"></script>
+        <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+        <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+       
+
+
+
+        <script src="js/app.js"></script>
+        <script src="js/services/coupons.js"></script>
+        <script src="js/services/profile.js"></script>
+    
+        <script src="js/directives/google.js"></script>
+        <script src="js/directives/dropzone.js"></script>
+
+    
+        <script src="js/controllers/main.js"></script>
+        <script src="js/controllers/home.js"></script>
+        <script src="js/controllers/new.js"></script>
+        <script src="js/controllers/login.js"></script>
+        <script src="js/controllers/edit.js"></script>
+        <script src="js/controllers/view.js"></script>
+    
+    </body>
+</html>

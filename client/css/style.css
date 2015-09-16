@@ -1,0 +1,33 @@
+.dropzone {
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    background: white;
+}
+
+#addAddress{
+    margin: 10px;
+}
+
+#fileUpload{
+    margin: 10px;
+}
+
+.tw_blue{
+    color: #166eac;
+}
+
+.tw_control:hover{
+    color: #166eac;
+}
+
+.preview {
+    margin: auto;
+    width: 60%;
+    border:3px dashed #0087f7;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.modal-backdrop {
+    background-color: rgba(0,0,0, .4);
+}
