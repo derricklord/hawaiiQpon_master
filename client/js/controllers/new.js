@@ -24,7 +24,8 @@
             category:[],
             locations: [],
             expiration: new Date(),
-            premium:false
+            premium:false,
+            vendor: ''
         };
         
 

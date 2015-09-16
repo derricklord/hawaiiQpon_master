@@ -16,6 +16,7 @@ var couponSchema = new mongoose.Schema({
   resource_url: String,
   promo_code: String,
   premium: Boolean,
+  vendor: String,
   locations: [
       {
         url:String,

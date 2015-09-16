@@ -74,6 +74,7 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     coupon.resource_url = req.body.resource_url;
     coupon.premium = req.body.premium;
     coupon.promo_code = req.body.promo_code;
+    coupon.vendor = req.body.vendor;
     
     if(req.body.locations){
         var locations = req.body.locations;

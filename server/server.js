@@ -22,7 +22,7 @@ var userRoutes = require('./user/user.routes');
 
 //Initialize Server
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 var done = false;
 var filename = '';
 
