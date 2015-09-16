@@ -149,9 +149,37 @@ angular.module('your_app_name.app.controllers', [])
 })
 
 
-.controller('ShopCtrl', function($scope, ShopService) {
+.controller('ShopCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation) {
+    
+  var options = {
+    timeout: 10000,
+    enableHighAccuracy: true
+  };
+    
+    $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+        var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitutde);
+        var mapOptions = {
+            center: latLng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    }, function(error){
+        console.log('Could not get location');
+    
+    });
+    
   $scope.products = [];
   $scope.popular_products = [];
+  $scope.coupons = [];
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };  
+    
+    
+  Coupons.getCoupons().then(function(coupons){
+    $scope.coupons = coupons.data.coupons;
+  });
 
   ShopService.getProducts().then(function(products){
     $scope.products = products;
