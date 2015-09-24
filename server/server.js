@@ -22,16 +22,30 @@ var userRoutes = require('./user/user.routes');
 
 //Initialize Server
 var app = express();
-var port = process.env.PORT || 80;
+var production = false;
+
 var done = false;
 var filename = '';
 
+if(production){
+  var port = process.env.PORT || 80;
+  //Initialize Database
+  mongoose.connect(config.MONGO_URI);
+  mongoose.connection.on('error', function() {
+    console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  }); 
+}else{
+  var port = process.env.PORT || 3000;
+  
+  //Initialize Database
+  mongoose.connect(config.MONGO_URI_LAB);
+  mongoose.connection.on('error', function() {
+    console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  });  
+}
 
-//Initialize Database
-mongoose.connect(config.MONGO_URI);
-mongoose.connection.on('error', function() {
-  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
-});
+
+
 
 
 //Configure Server Environment

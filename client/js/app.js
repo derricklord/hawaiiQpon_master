@@ -58,8 +58,7 @@
                       url: '/auth/google',
                       authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
                       redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
-                      clientId: '468438291867-1mtm2rvogp3hpelj7l9c7tuqdqcjpdrk.apps.googleusercontent.com',
-                      /*clientId: '336814594012-tcjdjlifhj04pohlsnv610pd9nn21cpp.apps.googleusercontent.com',  */   
+                      clientId: '559791642689-2gu035p3i1sv05na3274rp46fn9rke2e.apps.googleusercontent.com',  /*DEV*/   
                       scope: ['profile', 'email'],
                       scopePrefix: 'openid',
                       scopeDelimiter: ' ',

@@ -49,22 +49,13 @@ router.get('/:id', function(req, res) {
 router.post('/', util.ensureAuthenticated, function(req, res) {
     
   var coupon = new Coupon();
-
     coupon.title = req.body.title;
     coupon.desc = req.body.desc;
     coupon.desc2 = req.body.desc2;
     coupon.category = req.body.category;
     coupon.owner = req.user;
-    
-    coupon.created_on = Date.now();
-    
-    if(req.body.expiration){
-        coupon.expiration = req.body.expiration;
-    }else{
-        coupon.expiration = moment().add(30, 'days').unix()
-    }
-    
-    
+    coupon.hasExpiration = req.body.expires;
+    coupon.created_on = Date.now();    
     coupon.hasImage = req.body.hasImage;
     
     if(coupon.hasImage){

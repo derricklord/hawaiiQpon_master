@@ -8,6 +8,7 @@ var couponSchema = new mongoose.Schema({
   desc2: String,
   owner: {type: ObjectId, ref: 'User'},   
   expiration: Date,
+  hasExpiration: Boolean,
   created_on: Date, 
   active: Boolean,
   hasImage: Boolean,
