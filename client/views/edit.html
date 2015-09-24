@@ -43,7 +43,6 @@
                         <label for="expiration">Expiration Date</label>
                         <input type="date" class="form-control" id="expiration" placeholder="Expiration Date"  required >
                       </div>
-
                      <div class="checkbox">
                         <label>
                           <input type="checkbox" ng-model="coupon.active"> Coupon is Active
@@ -53,7 +52,12 @@
                         <label>
                           <input type="checkbox" ng-model="coupon.premium"> Premium Listing
                         </label>
-                      </div>                      
+                      </div>  
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="coupon.expires"> Coupon Expires
+                        </label>
+                      </div>                                         
                     <div class="form-group">
                         <button class="btn btn-primary" ng-click="saveCoupon()">
                             Save Coupon
