@@ -1,6 +1,4 @@
-<div class="row">
-    <div class="col-md-12">
-        
+      
         <ul class="nav nav-tabs">
             <li class="active" data-toggle="tab"><a showtab href="#profile">Profile</a></li>
             <li data-toggle="tab"><a showtab href="#mycoupons">My Coupons</a></li>
@@ -14,7 +12,7 @@
             </div>
         </div>
         
-        <div id="mycoupons" class="tab-pane fade">
+        <div class="tab-pane fade" id="mycoupons">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="coupon in coupons | filter: profile._id">
                     <div class="pull-right">
@@ -33,9 +31,9 @@
             <a class="btn btn-success" ui-sref="new">New Coupon</a>
         </div>       
 
-        <div id="allcoupons" class="tab-pane fade">
+        <div class="tab-pane fade" id="allcoupons">
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="coupon in coupons">
+                <li class="list-group-item" ng-repeat="coupon in coupons"">
                     <div class="pull-right">
                         <i class="fa fa-tag tw_control" ui-sref="view({id: coupon._id})"></i>
                         <i class="fa fa-edit tw_control" ui-sref="edit({id: coupon._id})"></i>
@@ -51,6 +49,4 @@
             </ul>
             <a class="btn btn-success" ui-sref="new">New Coupon</a>
         </div>     
-        
-    </div>
-</div>
+
