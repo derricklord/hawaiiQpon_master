@@ -2,12 +2,12 @@
   <ion-content>
         <ion-list>
             <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons" style="background-color:rgba(0,170,0, .10);">
-              <h2 class="list-text">{{premium.vendor}}</h2>
+              <h2 class="list-text" style="color:darkgreen;">{{premium.vendor}}</h2>
               <h3> <i class="{{premium.icon}}"></i>  {{premium.category}}</h3>
              {{premium.title}} 
               </br>
               Distance: {{premium.distance}} mile(s)
-               <button class="button button-outline button-balanced">Redeem</button>              
+               <button class="button  button-balanced">Redeem</button>              
             </ion-item>        
 
             <ion-item class="item-button-right" ng-repeat="coupon in coupons">
