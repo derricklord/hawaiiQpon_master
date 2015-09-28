@@ -13,7 +13,7 @@ angular.module('your_app_name', [
   'underscore',
   'angularMoment',
   'ngCordova',
-    'ngMap'
+  'ngMap'
 ])
 
 
@@ -118,22 +118,32 @@ angular.module('your_app_name', [
     }
   })
 
-  .state('app.shop.popular', {
-    url: "/popular",
+  .state('app.attractions', {  //Coupon Attractions
+    url: "/attractions",
     views: {
       'shop-popular': {
-        templateUrl: "views/app/shop/shop-popular.html",
-        controller: 'ShopCtrl'
+        templateUrl: "views/app/coupons/coupon-list.html",
+        controller: 'attractionsCtrl'
       }
     }
   })
 
-  .state('app.shop.sale', {
+  .state('app.shop.popular', {  //Coupon Map
+    url: "/popular",
+    views: {
+      'shop-popular': {
+        templateUrl: "views/app/coupons/coupon-map.html",
+        controller: 'couponCtrl'
+      }
+    }
+  })
+
+  .state('app.shop.sale', {  //Coupon List
     url: "/sale",
     views: {
       'shop-sale': {
-        templateUrl: "views/app/shop/shop-sale.html",
-        controller: 'ShopCtrl'
+        templateUrl: "views/app/coupons/coupon-list.html",
+        controller: 'couponCtrl'
       }
     }
   })

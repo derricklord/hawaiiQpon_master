@@ -2,14 +2,17 @@
   <ion-content>
         <ion-list>
           <div ng-repeat="coupon in coupons">
-            <ion-item ng-repeat="loc in coupon.locations">
-              <i class="ion-beer"></i>   {{coupon.title}} 
+            <ion-item class="item-button-right">
+              <h2 class="list-text">{{coupon.vendor}}</h2>
+              <h3> <i class="{{coupon.icon}}"></i>  {{coupon.category}}</h3>
+             {{coupon.title}} 
               </br>
-              Distance: {{loc.distance}}
-            </ion-item>
-          <div>
-        </ion-list>
-  </ion-content>
+              Distance: {{coupon.distance}} mile(s)
+               <button class="button button-outline button-balanced">Redeem</button>
+            </ion-item>        
+          <div>               
+        </ion-list>  
+  </ion-content> 
 </ion-view>
 
 

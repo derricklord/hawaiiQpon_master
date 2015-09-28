@@ -1,4 +1,5 @@
 <ion-side-menus enable-menu-with-back-views="false">
+
   <ion-side-menu-content>
     <ion-nav-bar ng-class="{'profile-color': ('app.profile' | includedByState), 'settings-color': ('app.settings' | includedByState), 'product-color': ('app.product-detail' | includedByState), 'feed-color': ('app.feed' | includedByState), 'shop-color': ('app.shop' | includedByState), 'cart-color': ('app.cart' | includedByState), 'shipping-address-color': ('app.shipping-address' | includedByState), 'checkout-color': ('app.checkout' | includedByState)}">
       <ion-nav-back-button>
@@ -14,43 +15,80 @@
   <ion-side-menu side="left">
     <ion-content has-bouncing="false" scroll="false" class="menu-outer left-menu">
        <!-- Modified: Derrick - changed to random image -->
-       <div multi-bg="['http://lorempixel.com/640/1136/food']">
+       <!--<div multi-bg="['http://lorempixel.com/640/1136/food']">-->
+        <div multi-bg="">
         <div class="row menu-top-options">
-          <div class="col col-top">
+          <div class="col col-top">        
             <ion-list>
+
+              
               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.home">
-                <i class="menu-icon icon ion-ios-pricetags"></i>
-                <h2 class="menu-text">Coupons</h2>
+                <i class="menu-icon icon ion-ios-pricetags menu-color"></i>
+                <h2 class="side-menu-text">All Coupons</h2>
               </ion-item>
+              
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.sale">
+                <i class="menu-icon icon ion-map menu-color"></i>
+                <h2 class="side-menu-text">Attractions</h2>
+              </ion-item>
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.popular">
+                <i class="menu-icon icon ion-person-stalker menu-color"></i>
+                <h2 class="side-menu-text">Services</h2>
+              </ion-item>
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.dining">
+                <i class="menu-icon icon ion-wineglass menu-color"></i>
+                <h2 class="side-menu-text">Dining</h2>
+              </ion-item>   
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.entertainment">
+                <i class="menu-icon icon ion-music-note menu-color"></i>
+                <h2 class="side-menu-text">Entertainment</h2>
+              </ion-item>  
+               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shopping">
+                <i class="menu-icon icon ion-cash menu-color"></i>
+                <h2 class="side-menu-text">Shopping</h2>
+              </ion-item> 
               <!--
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.feed">
-                <i class="menu-icon icon ion-location"></i>
-                <h2 class="menu-text">Map View</h2>
+              <div class="item item-divider title">
+                Islands
+              </div> 
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.sale">
+                <i class="menu-icon icon ion-location menu-color"></i>
+                <h2 class="side-menu-text">Big Island</h2>
               </ion-item>
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.cart">
-               
-                <i class="menu-icon icon ion-ios-cart"></i>
-                <h2 class="menu-text">Shopping cart</h2>
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.popular">
+                <i class="menu-icon icon ion-location menu-color"></i>
+                <h2 class="side-menu-text">Kauai</h2>
               </ion-item>
-              -->
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.dining">
+                <i class="menu-icon icon ion-location menu-color"></i>
+                <h2 class="side-menu-text">Maui</h2>
+              </ion-item>    
+               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shopping">
+                <i class="menu-icon icon ion-location menu-color"></i>
+                <h2 class="side-menu-text">Oahu</h2>
+              </ion-item>  
+              -->                                     
             </ion-list>
           </div>
         </div>
         <div class="row menu-bottom-options">
           <div class="col col-bottom">
             <ion-list>
-              <ion-item class="user-item" menu-close ui-sref="app.profile.posts({userId:loggedUser._id})">
+              <ion-item class="user-item" menu-close ui-sref="app.settings">
                 <!-- We need a wrapper with width set for the preload image directive -->
                 <div class="user-image-outer">
                   <pre-img ratio="_1_1" helper-class="rounded-image">
                     <img class="user-image" ng-src="{{loggedUser.picture}}" spinner-on-load>
                 	</pre-img>
                 </div>
-                <h2 class="menu-text">{{loggedUser.name}}</h2>
+                <h2 class="side-menu-text">{{loggedUser.name}}</h2>
+                <i class="menu-icon icon ion-gear-b menu-color"></i>
+
                 <div class="user-inbox">
-                  <i class="menu-icon icon ion-ios-filing"></i>
-                  <span class="inbox-unread">13</span>
+
+                  <!--<span class="inbox-unread">13</span>-->
                 </div>
+
               </ion-item>
               <!--
               <ion-item class="full-width-item" menu-close ui-sref="app.shop.sale">

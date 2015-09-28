@@ -1,6 +1,6 @@
 {
-  "name": "ionTheme-1",
-  "app_id": "",
+  "name": "hawaiiQpon",
+  "app_id": "913cf915",
   "gulpStartupTasks": [
     "default",
     "watch",

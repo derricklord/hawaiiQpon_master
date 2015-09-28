@@ -1,0 +1,18 @@
+<ion-view view-title="Map View" class="shop-popular-view">
+  <ion-content data-tap-disabled="true">
+          <map id="map" center="current-location"" zoom="12">   
+              <marker id="myLocation" 
+                      position="{{myLoc.lat}}, {{myLoc.long}}" 
+                      visible="true" 
+                      animation="BOUNCE" 
+                      draggable="false"
+                      >
+              </marker>
+            
+              <div ng-repeat="coupon in coupons">
+                  <marker id="{{coupon._id}}" position="{{coupon.loc.lat}}, {{coupon.loc.long}}">
+                  </marker>                           
+              </div>
+          </map>
+  </ion-content>
+</ion-view>
