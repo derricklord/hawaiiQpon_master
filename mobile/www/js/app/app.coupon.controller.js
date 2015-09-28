@@ -3,8 +3,7 @@ angular.module('your_app_name.app.controllers')
   //var posOptions = {timeout: 6000, enableHighAccuracy: true};
   $scope.coupons = [];
   $scope.premiumCoupons = [];
-  $scope.filterText = '';
-  $scope.setFilter = setFilter;
+
 
 
   $cordovaGeolocation
@@ -43,10 +42,6 @@ angular.module('your_app_name.app.controllers')
                         location.category = 'General'
                       }
                       
-                      if(location.distance < 25 && !location.premium){
-                             $scope.coupons.push(location);
-                      }
-                      
                       switch(coupon.category){
                           case 'Attraction':
                             location.icon = 'ion-map';
@@ -67,9 +62,17 @@ angular.module('your_app_name.app.controllers')
                             location.icon = 'ion-location';
                       }
                       
+                      
+                      if(location.distance < 25 && !location.premium){
+                             $scope.coupons.push(location);
+                      }
+
+                      if(location.distance < 25 && location.premium){
+                             $scope.premiumCoupons.push(location);
+                      }                     
                   });
               });
-             //$scope.coupons = coupons.data.coupons;
+
             
           });      
     }, function(err){

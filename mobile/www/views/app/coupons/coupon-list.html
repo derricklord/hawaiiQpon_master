@@ -1,8 +1,16 @@
 <ion-view view-title="Coupon Listing" class="shop-sale-view">
   <ion-content>
         <ion-list>
-          <div ng-repeat="coupon in coupons">
-            <ion-item class="item-button-right">
+            <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons" style="background-color:rgba(0,170,0, .10);">
+              <h2 class="list-text">{{premium.vendor}}</h2>
+              <h3> <i class="{{premium.icon}}"></i>  {{premium.category}}</h3>
+             {{premium.title}} 
+              </br>
+              Distance: {{premium.distance}} mile(s)
+               <button class="button button-outline button-balanced">Redeem</button>              
+            </ion-item>        
+
+            <ion-item class="item-button-right" ng-repeat="coupon in coupons">
               <h2 class="list-text">{{coupon.vendor}}</h2>
               <h3> <i class="{{coupon.icon}}"></i>  {{coupon.category}}</h3>
              {{coupon.title}} 
@@ -10,7 +18,9 @@
               Distance: {{coupon.distance}} mile(s)
                <button class="button button-outline button-balanced">Redeem</button>
             </ion-item>        
-          <div>               
+
+            
+                           
         </ion-list>  
   </ion-content> 
 </ion-view>
