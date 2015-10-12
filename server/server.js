@@ -38,7 +38,7 @@ if(production){
   var port = process.env.PORT || 3000;
   
   //Initialize Database
-  mongoose.connect(config.MONGO_URI_LAB);
+  mongoose.connect(config.MONGO_URI);
   mongoose.connection.on('error', function() {
     console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
   });  
