@@ -1,6 +1,7 @@
 <ion-view view-title="Map View" class="shop-popular-view">
   <ion-content data-tap-disabled="true">
           <map id="map" center="current-location"" zoom="14" street-view-control="false">   
+
               <marker id="myLocation" 
                       position="{{myLoc.lat}}, {{myLoc.long}}" 
                       visible="true" 
@@ -8,9 +9,10 @@
                       draggable="false"
                       >
               </marker>
-            
+
+
               <div ng-repeat="coupon in coupons">
-                  <marker id="{{coupon._id}}" position="{{coupon.loc.lat}}, {{coupon.loc.long}}">
+                  <marker id="{{coupon._id}}" position="{{coupon.loc.lat}}, {{coupon.loc.long}}" icon="/img/markers/{{coupon.category}}.png">
                   </marker>                           
               </div>
           </map>

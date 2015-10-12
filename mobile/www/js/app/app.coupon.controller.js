@@ -1,11 +1,14 @@
 angular.module('your_app_name.app.controllers')
-.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation) {
+.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading) {
   //var posOptions = {timeout: 6000, enableHighAccuracy: true};
   $scope.coupons = [];
   $scope.premiumCoupons = [];
   $scope.filter = '';
   $scope.radius = 25;
-
+  
+    $ionicLoading.show({
+      template: 'Finding Deals...'
+    });
 
 
   $cordovaGeolocation
@@ -75,7 +78,7 @@ angular.module('your_app_name.app.controllers')
                   });
               });
 
-              console.log($scope.coupons);
+              $ionicLoading.hide();
           });      
     }, function(err){
           // error
