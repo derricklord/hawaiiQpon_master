@@ -5,17 +5,35 @@
         .module('coupon')
         .controller('homeCtrl', homeCtrl);
 
-    homeCtrl.$inject = ['$scope','Coupons', 'Profile'];
+    homeCtrl.$inject = ['$scope','Coupons', 'Profile', '$modal'];
 
     /* @ngInject */
-    function homeCtrl($scope, Coupons, Profile){
+    function homeCtrl($scope, Coupons, Profile, $modal){
         $scope.init = init;
         $scope.delete = deleteCoupon;    
         $scope.isAuthenticated = isAuthenticated;
         $scope.logout = logout;
-
-
+        $scope.admin = true;
+        $scope.owned = '';
+        $scope.checkExpiration = checkExpiration;
+        $scope.setOwned = setOwned;
         
+        function setOwned(owner){
+            if(owner === $scope.owned){
+                $scope.owned = '';
+                console.log($scope.owned);
+            }else{
+                $scope.owned = owner;
+                console.log($scope.owned);
+            }
+        };
+        
+
+        function checkExpiration(date){
+          //console.log(date);  
+          return true;  
+        };
+
         function logout(){
             $auth.logout();
         };
@@ -38,6 +56,7 @@
             Profile.getProfile()
                 .success(function(data){
                     $scope.profile = data;
+                    //console.log(data);
                 })
                 .error(function(error){
                     console.log(error);

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-     angular.module('coupon', ['ui.router', 'satellizer', 'mgcrea.ngStrap'])
+     angular.module('coupon', ['ui.router', 'satellizer', 'mgcrea.ngStrap', 'datatables'])
             .config(configuration)
 
             configuration.$inject = ['$stateProvider', '$urlRouterProvider', '$authProvider'];
