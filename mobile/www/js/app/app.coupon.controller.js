@@ -3,6 +3,8 @@ angular.module('your_app_name.app.controllers')
   //var posOptions = {timeout: 6000, enableHighAccuracy: true};
   $scope.coupons = [];
   $scope.premiumCoupons = [];
+  $scope.filter = '';
+  $scope.radius = 25;
 
 
 
@@ -63,17 +65,17 @@ angular.module('your_app_name.app.controllers')
                       }
                       
                       
-                      if(location.distance < 25 && !location.premium){
+                      if(location.distance < $scope.radius && !location.premium){
                              $scope.coupons.push(location);
                       }
 
-                      if(location.distance < 25 && location.premium){
+                      if(location.distance < $scope.radius && location.premium){
                              $scope.premiumCoupons.push(location);
                       }                     
                   });
               });
 
-            
+              console.log($scope.coupons);
           });      
     }, function(err){
           // error
