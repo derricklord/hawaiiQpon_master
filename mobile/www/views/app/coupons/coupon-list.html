@@ -1,21 +1,40 @@
 <ion-view view-title="Coupon Listing" class="shop-sale-view">
   <ion-content>
-        <ion-list>
-            <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'" >
-              <h2 class="list-text" >{{premium.vendor}}</h2>
-              <h3> <i class="{{premium.icon}}"></i>  {{premium.category}}</h3>
-             {{premium.title}} 
-              </br>
-              Distance: {{premium.distance}} mile(s)
-               <button class="button  button-outline button-balanced">Redeem</button>              
-            </ion-item>        
-
+        <ion-list>     
+            <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
+                <div>
+                  <span style="width:12%; float:left;">
+                      <img ng-src="/img/markers/{{premium.category}}.png"/>
+                  </span>
+                  <span style="width:88%; float:left;">
+                      <h2 class="list-text">{{premium.vendor}}</h2>
+                      <h3> {{premium.category}}</h3>
+                  </span>
+                </div>
+                <div>
+                  <p>{{premium.title}} </p>
+                  <p>Distance: {{premium.distance}} mile(s)</p>
+                </div>
+                <p>{{premium.title}} </p>
+                <p>Distance: {{premium.distance}} mile(s)</p>
+               <button class="button button-outline button-balanced">Redeem</button>
+            </ion-item>            
             <ion-item class="item-button-right" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
-              <h2 class="list-text">{{coupon.vendor}}</h2>
-              <h3> <i class="{{coupon.icon}}"></i>  {{coupon.category}}</h3>
-             {{coupon.title}} 
-              </br>
-              Distance: {{coupon.distance}} mile(s)
+                <div>
+                  <span style="width:12%; float:left;">
+                      <img ng-src="/img/markers/{{coupon.category}}.png"/>
+                  </span>
+                  <span style="width:88%; float:left;">
+                      <h2 class="list-text">{{coupon.vendor}}</h2>
+                      <h3> {{coupon.category}}</h3>
+                  </span>
+                </div>
+                <div>
+                  <p>{{coupon.title}} </p>
+                  <p>Distance: {{coupon.distance}} mile(s)</p>
+                </div>
+                <p>{{coupon.title}} </p>
+                <p>Distance: {{coupon.distance}} mile(s)</p>
                <button class="button button-outline button-balanced">Redeem</button>
             </ion-item>        
 
