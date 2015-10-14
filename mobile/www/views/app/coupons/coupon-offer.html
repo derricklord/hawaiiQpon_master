@@ -16,30 +16,45 @@
     </ion-footer>-->
   <div class="post-card">
   <div class="list card">
+    <!--
     <div class="item item-image">
       <pre-img ratio="_3_2" helper-class="main-image" style="margin: 0 auto;">
         <img src="img/twlogo.png" spinner-on-load style="width:50%;">
       </pre-img>
     </div>
-
- 
-    <div class="item item-body">
-      <h2 class="card-title">{{offer.title}}</h2>
-      <p class="card-description">
-          {{offer.desc}}
+    -->
+    <div class="item item-image" style="height: 150px;">
+      <img src="img/twlogo.png" style="width:40%; margin: 0 auto; text-align: center; margin-top: 20px;">
+    </div>
+    
+    <div class="item item-image" style="height: 180px;">
+      <img src="img/item.png">
+    </div>
+    <div class="item item-body" style="background-color: green; color: white; height: 100px; padding: 3px;">
+      <h2 style="text-align: center; color: white;">{{offer.desc}}</h2>
+      <h3 style="text-align: center; color: white;">exp. {{offer.expiration| date:'shortDate'}}</h3>
+      <!--exp. <span class="card-moment-posted" am-time-ago="offer.expiration" style="text-align:center;"></span>-->
+    </div>
+    <div class="item">
+      <p class="card-description" >
+          <h2 style="text-align: center;">{{offer.vendor}}</h2>
+          <small style="text-align: center;">{{offer.address}}</small>
+           
       </p>
-      <span class="card-moment-posted" am-time-ago="offer.expiration"></span>
-      <div class="card-avatar-image-outer">
-        Distance: {{offer.distance}}
-      </div>
+    </div>
+    <div class="item">     
+      <p>
+        <small>{{offer.desc2}} CODE: {{offer.promo_code}}</small>  
+      </p>
       <span style="float:right;">
         <button class="button button-outline button-balanced" ng-click="closeOffer()">Close</button>
-      </span>
+      </span>    
     </div>
+    
+    
   </div>
 </div>  
     
-    
-  </ion-modal-view>
+</ion-modal-view>
   
   

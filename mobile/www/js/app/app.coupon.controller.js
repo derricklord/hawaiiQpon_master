@@ -71,17 +71,20 @@ angular.module('your_app_name.app.controllers')
   
   $scope.updateCoupons = function(){
         Coupons.getCoupons().then(function(coupons){   
+          console.log(coupons);
               coupons.data.coupons.forEach(function(coupon){
                   coupon.locations.forEach(function(location){
                       var locDistance = calcDistance($scope.myLoc.lat, $scope.myLoc.long, location.loc.lat, location.loc.long, 'N');
                       location.distance = locDistance;
                       
                       location.desc = coupon.desc;
+                      location.desc2 = coupon.desc2;
                       location.expiration = coupon.expiration;
                       location.owner = coupon.owner;
                       location.premium = coupon.premium;
                       location.title = coupon.title;
                       location.vendor = coupon.vendor;
+                      location.promo_code = coupon.promo_code;
                       
                       if(coupon.category){
                         location.category = coupon.category;
@@ -119,7 +122,8 @@ angular.module('your_app_name.app.controllers')
                       }                     
                   });
               });
-               
+               //console.log($scope.coupons);
+               //console.log($scope.premiumCoupons);
               $ionicLoading.hide();   
         });
   };
@@ -154,6 +158,7 @@ angular.module('your_app_name.app.controllers')
     $scope.openOffer = function(coupon) {
       $scope.offer = coupon;
       $scope.modal.show();
+      console.log($scope.offer);
     };
     
 

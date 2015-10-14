@@ -55,8 +55,11 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     coupon.category = req.body.category;
     coupon.owner = req.user;
     coupon.hasExpiration = req.body.expires;
-    coupon.created_on = Date.now();    
+    coupon.created_on = Date.now();
+    coupon.expiration = req.body.expiration;    
     coupon.hasImage = req.body.hasImage;
+    
+    
     
     if(coupon.hasImage){
         coupon.img = req.body.img;
@@ -64,7 +67,7 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     
     coupon.resource_url = req.body.resource_url;
     coupon.premium = req.body.premium;
-    coupon.promo_code = req.body.promo_code;
+    coupon.promo_code = req.body.code;
     coupon.vendor = req.body.vendor;
     
     if(req.body.locations){

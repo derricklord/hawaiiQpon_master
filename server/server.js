@@ -22,7 +22,7 @@ var userRoutes = require('./user/user.routes');
 
 //Initialize Server
 var app = express();
-var production = false;
+var production = true;
 
 var done = false;
 var filename = '';
