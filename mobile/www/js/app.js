@@ -46,7 +46,7 @@ angular.module('your_app_name', [
     url: "/app",
     abstract: true,
     templateUrl: "views/app/side-menu.html",
-    controller: 'AppCtrl'
+    controller: 'couponCtrl'
   })
 
   .state('app.feed', {
@@ -118,15 +118,6 @@ angular.module('your_app_name', [
     }
   })
 
-  .state('app.attractions', {  //Coupon Attractions
-    url: "/attractions",
-    views: {
-      'shop-popular': {
-        templateUrl: "views/app/coupons/coupon-list.html",
-        controller: 'attractionsCtrl'
-      }
-    }
-  })
 
   .state('app.shop.popular', {  //Coupon Map
     url: "/popular",

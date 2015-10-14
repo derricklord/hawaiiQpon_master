@@ -1,4 +1,5 @@
   <ion-modal-view>
+    <!--
     <ion-header>
       <div style="margin: 0 auto;  height: 200px;">
        <img src="img/twlogo.png" />
@@ -12,5 +13,33 @@
          <h3>{{offer.vendor}}</h3>
          <h4>{{offer.address}}</h4>
          <button class="button button-outline button-balanced" ng-click="closeOffer()">Close</button>
-    </ion-footer>
+    </ion-footer>-->
+  <div class="post-card">
+  <div class="list card">
+    <div class="item item-image">
+      <pre-img ratio="_3_2" helper-class="main-image" style="margin: 0 auto;">
+        <img src="img/twlogo.png" spinner-on-load style="width:50%;">
+      </pre-img>
+    </div>
+
+ 
+    <div class="item item-body">
+      <h2 class="card-title">{{offer.title}}</h2>
+      <p class="card-description">
+          {{offer.desc}}
+      </p>
+      <span class="card-moment-posted" am-time-ago="offer.expiration"></span>
+      <div class="card-avatar-image-outer">
+
+      </div>
+      <span style="float:right;">
+        <button class="button button-outline button-balanced" ng-click="closeOffer()">Close</button>
+      </span>
+    </div>
+  </div>
+</div>  
+    
+    
   </ion-modal-view>
+  
+  

@@ -1,0 +1,18 @@
+
+[HNA]  21.53  158.12  Barbers Pt,HI
+[HNA]  21.53  158.12  Barbers Pt,HI
+[BKH]  22.05  160.30  Barking San,HI
+[1Z6]  24.45  166.47  Fr Frigate,HI
+[ITO]  19.72  155.07  Hilo,HI
+[HNL]  21.35  157.93  Honolulu Int,HI
+[OGG]  20.90  156.43  Kahului Maui,HI
+[HNG]  21.75  158.28  Kaneohe Mca,HI
+[HNG]  21.75  158.28  Kaneohe Mca,HI
+[KOA]  19.75  156.05  Ke-Ahole/Kon,HI
+[0Z5]  22.38  159.67  Kilauea Pt,HI
+[LNY]  20.80  156.95  Lanai-Lanai,HI
+[LIH]  21.98  159.35  Lihue-Kauai,HI
+[JHM]  20.97  156.83  Maui,HI
+[MKK]  21.15  157.10  Molokai,HI
+[1Z2]  20.42  156.47  Upolo Pt Ln,HI
+[MUE]  20.00  156.12  Waimea-Koha,HI

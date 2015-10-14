@@ -19,34 +19,40 @@
         <div multi-bg="">
         <div class="row menu-top-options">
           <div class="col col-top">        
-            <ion-list>
-
-              
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.home">
+            <ion-list ng-if="listView">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('')" >
                 <i class="menu-icon icon ion-ios-pricetags menu-color"></i>
                 <h2 class="side-menu-text">All Coupons</h2>
               </ion-item>
-              
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.sale">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('General')">
+                <i class="menu-icon icon ion-map menu-color"></i>
+                <h2 class="side-menu-text">General</h2>
+              </ion-item>             
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Attraction')">
                 <i class="menu-icon icon ion-map menu-color"></i>
                 <h2 class="side-menu-text">Attractions</h2>
               </ion-item>
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shop.popular">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Service')">
                 <i class="menu-icon icon ion-person-stalker menu-color"></i>
                 <h2 class="side-menu-text">Services</h2>
               </ion-item>
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.dining">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Dining')">
                 <i class="menu-icon icon ion-wineglass menu-color"></i>
                 <h2 class="side-menu-text">Dining</h2>
               </ion-item>   
-              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.entertainment">
+              <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Entertainment')">
                 <i class="menu-icon icon ion-music-note menu-color"></i>
                 <h2 class="side-menu-text">Entertainment</h2>
               </ion-item>  
-               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ui-sref="app.shopping">
+               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Shopping')">
                 <i class="menu-icon icon ion-cash menu-color"></i>
                 <h2 class="side-menu-text">Shopping</h2>
               </ion-item> 
+
+               <ion-item ui-sref-active="active" class="item-icon-left" menu-close >
+                <i class="menu-icon icon ion-cash menu-color"></i>
+                <h2 class="side-menu-text">Maui</h2>
+              </ion-item>             
               <!--
               <div class="item item-divider title">
                 Islands

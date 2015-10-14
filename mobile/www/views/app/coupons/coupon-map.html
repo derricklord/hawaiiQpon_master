@@ -11,7 +11,7 @@
               </marker>
 
 
-              <div ng-repeat="coupon in coupons">
+              <div ng-repeat="coupon in coupons | filter:filter">
                   <marker id="{{coupon._id}}" 
                           position="{{coupon.loc.lat}}, {{coupon.loc.long}}" 
                           icon="/img/markers/{{coupon.category}}.png" on-click="openMapOffer(event, coupon)">

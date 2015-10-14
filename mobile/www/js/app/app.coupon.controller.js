@@ -1,11 +1,29 @@
 angular.module('your_app_name.app.controllers')
-.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal) {
-  //var posOptions = {timeout: 6000, enableHighAccuracy: true};
+.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal, AuthService, $ionicBackdrop) {
+
+  //this will represent our logged user
+  var user = {
+    about: "Design Lead of Project Fi. Love adventures, green tea, and the color pink.",
+    name: "Derrick Lord",
+    picture: "https://lh3.googleusercontent.com/-OTdpfY5F1P4/AAAAAAAAAAI/AAAAAAAAAAA/Z2CVWwGu1QM/photo.jpg?sz=46",
+    _id: 0,
+    followers: 345,
+    following: 58
+  };
+
+  //save our logged user on the localStorage
+  AuthService.saveUser(user);
+  $scope.loggedUser = user;
+
   $scope.coupons = [];
-  $scope.offer = {};
   $scope.premiumCoupons = [];
-  $scope.filter = '';
+  $scope.listView = true; 
+  
+  $scope.offer = {};
+  $scope.setFilter = setFilter;
+  $scope.setListView = setListView;
   $scope.radius = 25;
+
   
     $ionicLoading.show({
       template: 'Finding Deals...'
@@ -118,17 +136,26 @@ angular.module('your_app_name.app.controllers')
     $scope.$on('modal.removed', function() {
       // Execute action
     });
+    
+    
+
+    
   
-
-
-
-
-
-
+  
   function setFilter(filter){
     $scope.filter = filter;
+    console.log($scope.filter);
   };
-  
+
+  function setListView(value){
+    if(value){
+      $scope.listView = value;
+    }else{
+      $scope.listView = !$scope.listView;
+    }
+    
+  }
+
   function calcDistance(lat1, lon1, lat2, lon2, unit) {
           var radlat1 = Math.PI * lat1/180;
           var radlat2 = Math.PI * lat2/180;
@@ -144,5 +171,6 @@ angular.module('your_app_name.app.controllers')
           if (unit=="N") { dist = dist * 0.8684 };
           return Math.round(dist*100)/100;
   } 
+ 
    
 })
