@@ -12,9 +12,16 @@
 
 
               <div ng-repeat="coupon in coupons">
-                  <marker id="{{coupon._id}}" position="{{coupon.loc.lat}}, {{coupon.loc.long}}" icon="/img/markers/{{coupon.category}}.png">
-                  </marker>                           
+                  <marker id="{{coupon._id}}" 
+                          position="{{coupon.loc.lat}}, {{coupon.loc.long}}" 
+                          icon="/img/markers/{{coupon.category}}.png" on-click="openMapOffer(event, coupon)">
+                  </marker>                                           
               </div>
+              <info-window ng-repeat="coupon in coupons" id="{{coupon._id}}" position="{{coupon.loc.lat}}, {{coupon.loc.long}}" >
+                    <div class="infoWindow">
+                        <div class="content">code: {{ltd.code}}</div>
+                    </div>
+              </info-window>              
           </map>
   </ion-content>
 </ion-view>

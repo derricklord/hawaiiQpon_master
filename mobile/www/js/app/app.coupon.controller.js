@@ -1,7 +1,8 @@
 angular.module('your_app_name.app.controllers')
-.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading) {
+.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal) {
   //var posOptions = {timeout: 6000, enableHighAccuracy: true};
   $scope.coupons = [];
+  $scope.offer = {};
   $scope.premiumCoupons = [];
   $scope.filter = '';
   $scope.radius = 25;
@@ -77,43 +78,53 @@ angular.module('your_app_name.app.controllers')
                       }                     
                   });
               });
-
+               
               $ionicLoading.hide();
           });      
     }, function(err){
           // error
     });
 
-  
-  
-  //$scope.products = [];
- // $scope.popular_products = [];
-
-    
-    /*
-  Coupons.getCoupons().then(function(coupons){
-    
-    coupons.data.coupons.forEach(function(coupon){
-         coupon.locations.forEach(function(location){
-            var locDistance = calcDistance($scope.myLoc.lat, $scope.myLoc.long, location.loc.lat, location.loc.long, 'N');
-            location.distance = locDistance;
-         });
+    $ionicModal.fromTemplateUrl('views/app/coupons/coupon-offer.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
     });
-    $scope.coupons = coupons.data.coupons;
+  
+    $scope.openOffer = function(coupon) {
+      $scope.offer = coupon;
+      $scope.modal.show();
+    };
     
-  });
-  */
-  /*
-  ShopService.getProducts().then(function(products){
-    $scope.products = products;
-  });
+
+    $scope.openMapOffer = function(event, coupon) {
+      $scope.offer = coupon;
+      $scope.modal.show();
+    };   
+    
+    $scope.closeOffer = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+  
 
 
 
-  ShopService.getProducts().then(function(products){
-    $scope.popular_products = products.slice(0, 2);
-  });
-  */
+
+
+
   function setFilter(filter){
     $scope.filter = filter;
   };

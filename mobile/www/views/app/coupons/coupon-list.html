@@ -17,7 +17,7 @@
                 </div>
                 <p>{{premium.title}} </p>
                 <p>Distance: {{premium.distance}} mile(s)</p>
-               <button class="button button-outline button-balanced">Redeem</button>
+               <button class="button button-outline button-balanced" ng-click="openOffer(premium)">Redeem</button>
             </ion-item>            
             <ion-item class="item-button-right" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
                 <div>
@@ -35,7 +35,7 @@
                 </div>
                 <p>{{coupon.title}} </p>
                 <p>Distance: {{coupon.distance}} mile(s)</p>
-               <button class="button button-outline button-balanced">Redeem</button>
+               <button class="button button-outline button-balanced" ng-click="openOffer(coupon)">Redeem</button>
             </ion-item>        
 
             
