@@ -5,10 +5,10 @@
       <ion-nav-view name="shop-home"></ion-nav-view>
     </ion-tab>
     -->
-    <ion-tab title="Map" icon-on="ion-ios-location" icon-off="ion-ios-location-outline" ui-sref="app.shop.popular">
+    <ion-tab title="Map" icon-on="ion-ios-location" icon-off="ion-ios-location-outline" ng-click="showMap()">
       <ion-nav-view name="shop-popular"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Listing" icon-on="ion-ios-pricetags" icon-off="ion-ios-pricetags-outline" ui-sref="app.shop.sale">
+    <ion-tab title="Listing" icon-on="ion-ios-pricetags" icon-off="ion-ios-pricetags-outline" ng-click="showList()">
       <ion-nav-view name="shop-sale"></ion-nav-view>
     </ion-tab>
   </ion-tabs>

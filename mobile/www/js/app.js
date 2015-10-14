@@ -97,13 +97,22 @@ angular.module('your_app_name', [
       }
     }
   })
-
+  .state('app.coupon', {
+    url: "/coupon",
+    abstract: true,
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/shop/shop.html"
+      }
+    }
+  })
   .state('app.shop', {
     url: "/shop",
     abstract: true,
     views: {
       'menuContent': {
-        templateUrl: "views/app/shop/shop.html"
+        templateUrl: "views/app/shop/shop.html",
+        controller: 'couponCtrl'
       }
     }
   })

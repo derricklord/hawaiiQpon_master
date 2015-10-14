@@ -1,5 +1,5 @@
 angular.module('your_app_name.app.controllers')
-.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal, AuthService, $ionicBackdrop) {
+.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal, AuthService, $ionicBackdrop, $state) {
 
   //this will represent our logged user
   var user = {
@@ -20,15 +20,16 @@ angular.module('your_app_name.app.controllers')
   $scope.filteredCoupons = [];
   $scope.coupons = [];
   $scope.premiumCoupons = [];
-  $scope.listView = true; 
+ 
   
   $scope.offer = {};
   $scope.setFilter = setFilter;
-  $scope.setListView = setListView;
+
   $scope.slider = {};
   $scope.slider.radius = 25;
   $scope.slider.radiusStr = '';
-  
+  $scope.slider.listView =  true; 
+   
   //Show Loading Message
   $ionicLoading.show({
     template: 'Finding Deals...'
@@ -44,7 +45,16 @@ angular.module('your_app_name.app.controllers')
   });
 
 
-
+  $scope.showList = function(){
+        $scope.slider.listView = true;
+        $state.go('app.shop.sale');
+  };
+  
+  $scope.showMap = function(){
+        $scope.slider.listView = false;
+        console.log($scope.slider.listView);
+        $state.go('app.shop.popular');
+  };
 
   $scope.updateRadius = function(){
        $scope.slider.radius = parseInt($scope.slider.radiusStr);
@@ -137,7 +147,7 @@ angular.module('your_app_name.app.controllers')
       }, function(err){
             // error
       });
-  };
+   };
 
 
  
@@ -193,14 +203,6 @@ angular.module('your_app_name.app.controllers')
     console.log($scope.filter);
   };
 
-  function setListView(value){
-    if(value){
-      $scope.listView = value;
-    }else{
-      $scope.listView = !$scope.listView;
-    }
-    
-  }
 
   function calcDistance(lat1, lon1, lat2, lon2, unit) {
           var radlat1 = Math.PI * lat1/180;

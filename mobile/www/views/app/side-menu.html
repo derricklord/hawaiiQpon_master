@@ -19,7 +19,15 @@
         <div multi-bg="">
         <div class="row menu-top-options">
           <div class="col col-top">
-            <ion-list ng-if="listView">
+            
+            <label class="toggle toggle-balanced" style="margin-left: 100px;">
+              <input type="checkbox" ng-model="slider.listView">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>     
+                      
+            <ion-list ng-if="slider.listView">
               <div class="list">
                 <!--
                 <div class="item range range-balanced">
@@ -56,29 +64,31 @@
                <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Shopping')">
                 <i class="menu-icon icon ion-cash menu-color"></i>
                 <h2 class="side-menu-text">Shopping</h2>
-              </ion-item> 
-              
+              </ion-item>                       
+            </ion-list>
+            
+            <ion-list ng-if="!slider.listView">
                <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:19.614130, lng:-155.503234})">
-                <i class="menu-icon icon ion-marker menu-color"></i>
+                <i class="menu-icon icon ion-location menu-color"></i>
                 <h2 class="side-menu-text">Hawaii</h2>
               </ion-item>     
                <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:22.052550, lng:-159.510498})">
-                <i class="menu-icon icon ion-marker menu-color"></i>
+                <i class="menu-icon icon ion-location menu-color"></i>
                 <h2 class="side-menu-text">Kauai</h2>
               </ion-item>   
               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:20.776590, lng:-156.290130})">
-                <i class="menu-icon icon ion-marker menu-color"></i>
+                <i class="menu-icon icon ion-location menu-color"></i>
                 <h2 class="side-menu-text">Maui</h2>
               </ion-item>  
                <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:21.128059, lng:-156.993255})">
-                <i class="menu-icon icon ion-marker menu-color"></i>
+                <i class="menu-icon icon ion-location menu-color"></i>
                 <h2 class="side-menu-text">Molokai</h2>
               </ion-item>                       
-               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:20.776590, lng:-156.290130})">
-                <i class="menu-icon icon ion-marker menu-color"></i>
+               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="moveMap({lat:21.455624, lng:-157.972412})">
+                <i class="menu-icon icon ion-location menu-color"></i>
                 <h2 class="side-menu-text">Oahu</h2>
-              </ion-item>                                        
-            </ion-list>
+              </ion-item>                 
+            </ion-list>                     
           </div>
         </div>
         <div class="row menu-bottom-options">
