@@ -10,6 +10,8 @@ angular.module('your_app_name.app.controllers')
     followers: 345,
     following: 58
   };
+  
+  var map;
 
   //save our logged user on the localStorage
   AuthService.saveUser(user);
@@ -167,8 +169,23 @@ angular.module('your_app_name.app.controllers')
     });
     
     
-
+    $scope.$on('mapInitialized', function(evt, evtMap){
+        map = evtMap;
+        //console.log(map);
+        $scope.placeMarker = function(e) {
+          var marker = new google.maps.Marker({position: e.latLng, map: map});
+          map.panTo(e.latLng);
+          console.log(e.latLng.lat() + ' , ' + e.latLng.lng());
+        }
+        
+        $scope.moveMap = function(location){
+          map.setZoom(9);
+          map.setCenter(location);
+          
+        }       
+    });
     
+
   
   
   function setFilter(filter){
