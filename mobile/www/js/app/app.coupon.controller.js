@@ -14,7 +14,8 @@ angular.module('your_app_name.app.controllers')
   //save our logged user on the localStorage
   AuthService.saveUser(user);
   $scope.loggedUser = user;
-
+  $scope.allCoupons = [];
+  $scope.filteredCoupons = [];
   $scope.coupons = [];
   $scope.premiumCoupons = [];
   $scope.listView = true; 
@@ -22,31 +23,41 @@ angular.module('your_app_name.app.controllers')
   $scope.offer = {};
   $scope.setFilter = setFilter;
   $scope.setListView = setListView;
-  $scope.radius = 25;
-
+  $scope.slider = {};
+  $scope.slider.radius = 25;
+  $scope.slider.radiusStr = '';
   
-    $ionicLoading.show({
-      template: 'Finding Deals...'
-    });
+  //Show Loading Message
+  $ionicLoading.show({
+    template: 'Finding Deals...'
+  });
+  
+  
+  //Setup Offers Modal Window
+  $ionicModal.fromTemplateUrl('views/app/coupons/coupon-offer.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
 
-  $cordovaGeolocation
-    .getCurrentPosition({timeout: 6000, enableHighAccuracy: true})
-    .then(function (position) {
-        
-        var lat  = position.coords.latitude
-        var long = position.coords.longitude
-        $scope.map = { center: { latitude: lat, longitude: long}, zoom: 8 }; 
-        $scope.myLoc = {
-          lat:lat,
-          long: long
-        }
 
-    }, function(err) {
-         // error
-    })
-    .then(function(){
-       
+
+  $scope.updateRadius = function(){
+       $scope.slider.radius = parseInt($scope.slider.radiusStr);
+       var coupons = $scope.allCoupons;
+
+       coupons.forEach(function(coupon){
+         if(coupon.distance <= $scope.slider.radius || coupon.distance < 2){
+           $scope.filteredCoupons.push(coupon);      
+         }
+       });
+      $scope.coupons = $scope.filteredCoupons;
+  };
+  
+  
+  $scope.updateCoupons = function(){
         Coupons.getCoupons().then(function(coupons){   
               coupons.data.coupons.forEach(function(coupon){
                   coupon.locations.forEach(function(location){
@@ -85,31 +96,49 @@ angular.module('your_app_name.app.controllers')
                           default:
                             location.icon = 'ion-location';
                       }
+                      $scope.allCoupons.push(location);
                       
-                      
-                      if(location.distance < $scope.radius && !location.premium){
+                      if(location.distance < $scope.slider.radius && !location.premium){
                              $scope.coupons.push(location);
                       }
 
-                      if(location.distance < $scope.radius && location.premium){
+                      if(location.distance < $scope.slider.radius && location.premium){
                              $scope.premiumCoupons.push(location);
                       }                     
                   });
               });
                
-              $ionicLoading.hide();
-          });      
-    }, function(err){
-          // error
-    });
-
-    $ionicModal.fromTemplateUrl('views/app/coupons/coupon-offer.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
+              $ionicLoading.hide();   
+        });
+  };
   
+
+
+  $scope.init = function(){
+    $cordovaGeolocation
+      .getCurrentPosition({timeout: 6000, enableHighAccuracy: true})
+      .then(function (position) {
+          
+          var lat  = position.coords.latitude
+          var long = position.coords.longitude
+          $scope.map = { center: { latitude: lat, longitude: long}, zoom: 8 }; 
+          $scope.myLoc = {
+            lat:lat,
+            long: long
+          }
+  
+      }, function(err) {
+          // error
+      })
+      .then(function(){
+          $scope.updateCoupons();
+      }, function(err){
+            // error
+      });
+  };
+
+
+ 
     $scope.openOffer = function(coupon) {
       $scope.offer = coupon;
       $scope.modal.show();
@@ -172,5 +201,7 @@ angular.module('your_app_name.app.controllers')
           return Math.round(dist*100)/100;
   } 
  
-   
+ 
+ 
+  $scope.init();   
 })

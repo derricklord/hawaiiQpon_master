@@ -18,8 +18,17 @@
        <!--<div multi-bg="['http://lorempixel.com/640/1136/food']">-->
         <div multi-bg="">
         <div class="row menu-top-options">
-          <div class="col col-top">        
+          <div class="col col-top">
             <ion-list ng-if="listView">
+              <div class="list">
+                <!--
+                <div class="item range range-balanced">
+                  <i class="icon ion-ios-sunny-outline"></i>
+                  <input type="range" name="radius" min="1" max="100"  ng-model="slider.radiusStr" ng-blur="updateRadius()">
+                  <i class="icon ion-ios-sunny"></i>
+                </div>
+                -->
+              </div>              
               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('')" >
                 <i class="menu-icon icon ion-ios-pricetags menu-color"></i>
                 <h2 class="side-menu-text">All Coupons</h2>
