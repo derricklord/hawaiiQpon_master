@@ -5,10 +5,10 @@
         .module('coupon')
         .controller('newCtrl', newCtrl);
 
-    newCtrl.$inject = ['$scope', 'Coupons', '$state'];
+    newCtrl.$inject = ['$scope', 'Coupons', 'Vendors', '$state'];
 
     /* @ngInject */
-    function newCtrl($scope, Coupons, $state){
+    function newCtrl($scope, Coupons, Vendors, $state){
         //Page Variables
         $scope.location = '';
         $scope.places = [];
@@ -26,7 +26,8 @@
             expiration: new Date(),
             expires: true,
             premium:false,
-            vendor: ''
+            vendor: '',
+            vendorInfo:{}
         };
         
 
@@ -75,5 +76,18 @@
                     $state.go('home');
                 })
         }
+        
+        function init(){
+            Vendors.getVendors()
+                .success(function(data){
+                       $scope.vendors = data;
+                })
+                .error(function(error){
+                    console.log(error);
+                });
+            
+        };
+        
+        init();
     }
 })();

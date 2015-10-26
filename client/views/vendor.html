@@ -1,0 +1,47 @@
+
+<!-- ui-view goes here -->
+    <div class="row">
+            <form>
+                <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="vendor.name">
+                      </div>
+                      <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" class="form-control" id="website" placeholder="Website" ng-model="vendor.website">
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Phone" ng-model="vendor.phone">
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary" ng-click="saveVendor()">
+                            Save
+                        </button>
+                        <a class="btn btn-danger" ui-sref="home">
+                            Cancel
+                        </a>                       
+                     </div>                      
+                </div>                         
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="row" id="fileUpload">
+            <form action="" class="dropzone" dropzone="" id="dropzone">
+                <div class="dz-default dz-message">
+                </div>
+            <form>
+
+            <a ng-click="reset()" class="pull-right"><i class="fa fa-close"></i></a>
+
+            <script type="text/javascript">
+                Dropzone.autoDiscover = false;
+            </script>
+    </div>
+
+
+<!-- End of ui-view -->

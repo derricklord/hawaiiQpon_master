@@ -19,10 +19,11 @@ var analyticRoutes = require('./analytics/analytics.routes');
 var profileRoutes = require('./profile/profile.routes');
 var commonRoutes = require('./common/common.routes');
 var userRoutes = require('./user/user.routes');
+var vendorRoutes = require('./vendor/vendor.routes');
 
 //Initialize Server
 var app = express();
-var production = true;
+var production = false;
 
 var done = false;
 var filename = '';
@@ -43,8 +44,6 @@ if(production){
     console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
   });  
 }
-
-
 
 
 
@@ -80,6 +79,7 @@ app.use(multer({
 
 app.use('/auth', authRoutes);
 app.use('/api/coupons', couponRoutes);
+app.use('/api/vendors', vendorRoutes);
 app.use('/api/analytics', analyticRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/users', userRoutes);

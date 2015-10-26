@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('../user/user.model');
+var Vendor = require('../vendor/vendor.model');
 var ObjectId = mongoose.Schema.ObjectId;
 
 var couponSchema = new mongoose.Schema({
@@ -18,6 +19,7 @@ var couponSchema = new mongoose.Schema({
   promo_code: String,
   premium: Boolean,
   vendor: String,
+  vendorInfo: {type: ObjectId, ref: 'Vendor'},
   locations: [
       {
         url:String,

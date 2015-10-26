@@ -1,3 +1,4 @@
+
 <!-- ui-view goes here -->
     <div class="row">
 
@@ -21,15 +22,27 @@
                       </div>
                 </div>
                 <div class="col-md-6">
+                    <!--
                       <div class="form-group">
                         <label for="title">Vendor</label>
                         <input type="text" class="form-control" id="vendor" placeholder="Vendor" ng-model="coupon.vendor">
-                    </div>
+                     </div>
+                     <h1>{{coupon.vendorInfo}}</h1>
+                     -->
+                    <div class="form-group">
+                        <label>Vendor Information</label>
+                        <select class="form-control" ng-model="coupon.vendorInfo">
+                            <option ng-repeat="vendor in vendors" value="{{vendor._id}}">{{vendor.name}}</option>
+                        </select>
+                                
+                    </div>                    
+                    
                       <div class="form-group">
                         <label for="title">Footer</label>
                         <input type="text" class="form-control" id="footer" placeholder="Footer" ng-model="coupon.footer">
                       </div>
                       <div class="form-group">
+                        <label>Service</label>  
                         <select class="form-control" ng-model="coupon.category">
                           <option> </option>
                           <option>Service</option>
@@ -111,12 +124,12 @@
 
 
     <div class="row">
-        <!--
+
         <div class="col-md-12">
-            <small>{{coupon}}</small>
+            <small>{{vendors}}</small>
             <h3>{{filename}}</h3>
         </div>
-        -->
+
         <div class="col-md-12" ng-show="coupon.hasImage" style="margin:auto">
             <p>Preview</p>
             <img ng-src="uploads/{{coupon.img}}" class="img-responsive preview" />

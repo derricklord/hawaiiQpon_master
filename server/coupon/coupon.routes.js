@@ -59,7 +59,9 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     coupon.expiration = req.body.expiration;    
     coupon.hasImage = req.body.hasImage;
     
-    
+    if(req.body.vendorInfo){
+        coupon.vendorInfo = req.body.vendorInfo;
+    }
     
     if(coupon.hasImage){
         coupon.img = req.body.img;
@@ -112,7 +114,38 @@ router.post('/:id/location', util.ensureAuthenticated, function(req, res) {
 router.put('/:id', util.ensureAuthenticated, function(req, res) {
     
   Coupon.findById(req.params.id, function(err, coupon){
-
+        if(req.body.title){
+            coupon.title = req.body.title;
+        }
+        
+        if(req.body.desc){
+            coupon.desc = req.body.desc;
+        }
+        
+        if(req.body.desc2){
+            coupon.desc2 = req.body.desc2;
+        }
+        
+        if(req.body.category){
+            coupon.category = req.body.category;
+        }
+        
+        if(req.body.hasExpiration){
+            coupon.hasExpiration = req.body.expires;
+        }
+        
+        if(req.body.expiration){
+            coupon.expiration = req.body.expiration;
+        }    
+        
+        if(req.body.hasImage){
+            coupon.hasImage = req.body.hasImage;
+        }
+        
+        if(req.body.vendorInfo){
+            coupon.vendorInfo = req.body.vendorInfo;
+        }
+        
         if(req.body.vendor){
             coupon.vendor = req.body.vendor;
         }
@@ -130,8 +163,9 @@ router.put('/:id', util.ensureAuthenticated, function(req, res) {
             coupon.resource_url = req.body.resource_url;
         }
       
-        coupon.save();
-        res.send({coupon: coupon});
+        coupon.save(function(err){
+            res.send({coupon:coupon});
+        });
   });
                 
 });
