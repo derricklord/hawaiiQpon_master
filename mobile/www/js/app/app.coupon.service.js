@@ -10,7 +10,7 @@
             return $http.get(host +'/api/coupons/'+id);
           },
           getCoupons: function(){
-            return $http.get(host+'/api/coupons/all');
+            return $http.get(host+'/api/coupons/active');
           }      
         };
       });

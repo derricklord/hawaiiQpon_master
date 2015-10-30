@@ -9,7 +9,7 @@ var User = require('../user/user.model');
 var config = require('../config');
 var util = require('../util/lib.js');
 
-
+//Show all coupons
 router.get('/all', function(req, res){
     Coupon.find({})
         .exec(function(err, coupons){
@@ -19,12 +19,19 @@ router.get('/all', function(req, res){
 
 });
 
+//Show all active coupons
+router.get('/active', function(req, res){
+    Coupon.find({active:true})
+        .exec(function(err, coupons){
+            res.send({coupons:coupons});
+        });
+    
+
+});
 
 //Show all Coupons
 router.get('/', function(req, res){
     Coupon.find({})
-    .populate('vendorinfo')
-    //.populate('vendorinfo')
     .exec(function(err, coupons) { 
         res.send(coupons)
     });
