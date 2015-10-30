@@ -12,6 +12,8 @@ angular.module('your_app_name.app.controllers')
   };
   
   var map;
+  var host = 'http://hawaiiqpon.lordconsulting.net/uploads';
+  var link = "window.open(" +  + "', '_system', 'location=yes'); return false;"
 
   //save our logged user on the localStorage
   AuthService.saveUser(user);
@@ -71,7 +73,7 @@ angular.module('your_app_name.app.controllers')
   
   $scope.updateCoupons = function(){
         Coupons.getCoupons().then(function(coupons){   
-          console.log(coupons);
+            
               coupons.data.coupons.forEach(function(coupon){
                   coupon.locations.forEach(function(location){
                       var locDistance = calcDistance($scope.myLoc.lat, $scope.myLoc.long, location.loc.lat, location.loc.long, 'N');
@@ -84,7 +86,18 @@ angular.module('your_app_name.app.controllers')
                       location.premium = coupon.premium;
                       location.title = coupon.title;
                       location.vendor = coupon.vendor;
+                      location.vendor_url = coupon.vendor_url;
+                      location.vendor_phone = coupon.vendor_phone;
                       location.promo_code = coupon.promo_code;
+                      if(coupon.img){
+                          location.img = host + '/' + coupon.img;
+                      }else{
+                          location.img = 'img/twlogo.png'
+                      }
+                      
+                      location.launch = "window.open('" + location.vendor_url + "', '_system', 'location=yes'); return false;"
+                      
+                      
                       
                       if(coupon.category){
                         location.category = coupon.category;
@@ -170,6 +183,12 @@ angular.module('your_app_name.app.controllers')
     $scope.closeOffer = function() {
       $scope.modal.hide();
     };
+    
+    $scope.launch = function(url){
+        window.open(url, '_system', 'location=yes'); 
+        return false;
+    };
+    
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
       $scope.modal.remove();
@@ -183,6 +202,7 @@ angular.module('your_app_name.app.controllers')
       // Execute action
     });
     
+
     
     $scope.$on('mapInitialized', function(evt, evtMap){
         map = evtMap;
@@ -190,7 +210,7 @@ angular.module('your_app_name.app.controllers')
         $scope.placeMarker = function(e) {
           var marker = new google.maps.Marker({position: e.latLng, map: map});
           map.panTo(e.latLng);
-          console.log(e.latLng.lat() + ' , ' + e.latLng.lng());
+          //console.log(e.latLng.lat() + ' , ' + e.latLng.lng());
         }
         
         $scope.moveMap = function(location){

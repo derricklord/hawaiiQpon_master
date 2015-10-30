@@ -24,7 +24,8 @@
     </div>
     -->
     <div class="item item-image" style="height: 150px;">
-      <img src="img/twlogo.png" style="width:40%; margin: 0 auto; text-align: center; margin-top: 20px;">
+      <!--<img src="img/twlogo.png" style="width:40%; margin: 0 auto; text-align: center; margin-top: 20px;">-->
+      <img ng-src={{offer.img}} style="width:40%; margin: 0 auto; text-align: center; margin-top: 20px;">
     </div>
     
     <div class="item item-image" style="height: 180px;">
@@ -38,13 +39,16 @@
     <div class="item">
       <p class="card-description" >
           <h2 style="text-align: center;">{{offer.vendor}}</h2>
-          <small style="text-align: center;">{{offer.address}}</small>
-           
+          <h4 style="text-align: center;">{{offer.address}}</h4>
+          {{offer.vendor_url}}
+          <h4 style="text-align: center;"><a href="#" ng-click="launch(offer.vendor_url)" >Website</a></h4>
+          <h4 style="text-align: center;"><a href="tel:{{offer.vendor_phone}}" target="_blank">{{offer.vendor_phone}}</a></h4>  
       </p>
     </div>
     <div class="item">     
       <p>
-        <small>{{offer.desc2}} CODE: {{offer.promo_code}}</small>  
+        <h4 style="text-align: center;">{{offer.desc2}} </h4>
+        <h4 style="text-align: center;">CODE: {{offer.promo_code}}</h4> 
       </p>
       <span style="float:right;">
         <button class="button button-outline button-balanced" ng-click="closeOffer()">Close</button>
