@@ -12,6 +12,7 @@ var util = require('../util/lib.js');
 //Show all coupons
 router.get('/all', function(req, res){
     Coupon.find({})
+        .populate('owner')     
         .exec(function(err, coupons){
             res.send({coupons:coupons});
         });
@@ -32,6 +33,7 @@ router.get('/active', function(req, res){
 //Show all Coupons
 router.get('/', function(req, res){
     Coupon.find({})
+    .populate('owner')
     .exec(function(err, coupons) { 
         res.send(coupons)
     });
@@ -47,7 +49,6 @@ router.get('/upload', function(req, res){
 router.get('/:id', function(req, res) {
     Coupon.findOne({_id: req.params.id})
         .populate('owner')
-        .populate('vendorinfo')
         .exec(function(err, coupon) {
             res.send(coupon)
         });    
