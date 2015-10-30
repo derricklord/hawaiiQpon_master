@@ -10,6 +10,9 @@
           getVendors: function(){
             return $http.get('/api/vendors');
           },
+          myVendors: function(){
+            return $http.get('/api/vendors/my');  
+          },
           postVendor: function(pageData) {
             return $http.post('/api/vendors', pageData);
           },

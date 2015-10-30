@@ -23,6 +23,7 @@
             Coupons.getCoupon(id)
                 .success(function(data){
                     $scope.coupon = data;
+                    console.log($scope.coupon);
                 })
                 .error(function(){
                     console.log(error);

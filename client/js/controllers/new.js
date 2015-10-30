@@ -27,7 +27,9 @@
             expires: true,
             premium:false,
             vendor: '',
-            vendorInfo:{}
+            vendor_url: '',
+            vendor_phone: '',
+            vendor_logo: '',
         };
         
 
@@ -68,26 +70,20 @@
         
         //Save Coupon
         $scope.saveCoupon = function(){
+            if($scope.filename){
+                $scope.coupon.img = $scope.filename;
+            }
+            
             Coupons.postCoupon($scope.coupon)
                 .success(function(data){
+                    console.log(data);
                     $state.go('home');
                 })
                 .error(function(error){
-                    $state.go('home');
+                    console.log('Error');
+                    //$state.go('home');
                 })
         }
         
-        function init(){
-            Vendors.getVendors()
-                .success(function(data){
-                       $scope.vendors = data;
-                })
-                .error(function(error){
-                    console.log(error);
-                });
-            
-        };
-        
-        init();
     }
 })();

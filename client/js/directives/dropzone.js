@@ -20,12 +20,14 @@
 
                         var eventHandlers = {
                             'addedfile': function(file) {
+                                console.log(file);
                                 scope.file = file;
                                 if (this.files[1]!=null) {
                                     this.removeFile(this.files[0]);
                                 }
                                 scope.$apply(function() {
                                     scope.coupon.img = file.name;
+                                    scope.filename = file.name;
                                     scope.coupon.hasImage = true;
                                 });
                             },

@@ -1,72 +1,48 @@
-
 <!-- ui-view goes here -->
-    <div class="row">        
+    <div class="row">
+
             <form>
-                <div class="col-md-6" style="padding: 10px;">
-                     <h3>Coupon</h3>
+                <div class="col-md-6">
                       <div class="form-group">
-                        <label for="title"> Offer</label>
+                        <label for="title">Offer</label>
                         <input type="text" class="form-control" id="title" placeholder="Title" ng-model="coupon.title">
                       </div>
                       <div class="form-group">
-                        <label for="desc"> Details</label>
+                        <label for="desc">Offer Details</label>
                         <input type="text" class="form-control" id="desc" placeholder="Description" ng-model="coupon.desc">
                       </div>
                       <div class="form-group">
-                        <label for="title"> Disclaimer</label>
+                        <label for="title">Disclaimer</label>
                         <input type="text" class="form-control" id="desc2" placeholder="Additional Desciption" ng-model="coupon.desc2">
                       </div>
                       <div class="form-group">
-                        <label for="desc"> Code</label>
+                        <label for="desc">Coupon Code</label>
                         <input type="text" class="form-control" id="code" placeholder="Coupon Code" ng-model="coupon.code">
                       </div>
-                      <div class="form-group">
-                        <label for="title"> Footer</label>
+                     <div class="form-group">
+                        <label for="title">Coupon Footer</label>
                         <input type="text" class="form-control" id="footer" placeholder="Footer" ng-model="coupon.footer">
                       </div>                      
-                      <div class="form-group">
-                        <label for="expiration"> Expiration</label>
-
-                        <input type="date" class="form-control" id="expiration" placeholder="Expiration Date"  required ng-model="coupon.expiration">
-                      </div>
-
-                     <div class="checkbox">
-                        <label>
-                          <input type="checkbox" ng-model="coupon.active">  Active
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" ng-model="coupon.premium"> Premium 
-                        </label>
-                      </div>   
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" ng-model="coupon.expires"> Expires
-                        </label>
-                      </div>                        
                 </div>
                 
                 
-                <div class="col-md-6" style="background-color: rgba(22,110,172,.4); border-radius: 5px; padding: 10px;">
-                      <h3>Vendor </h3>
+                <div class="col-md-6">
+                     <div class="form-group">
+                        <label for="title">Vendor</label>
+                        <input type="text" class="form-control" id="vendor" placeholder="Vendor" ng-model="coupon.vendor">
+                      </div>                                       
                       <div class="form-group">
-                        <label for="vendor">Name</label>
-                        <input type="text" class="form-control" id="vendor" placeholder=" Vendor" ng-model="coupon.vendor">
+                      <div class="form-group">
+                        <label for="title">Vendor Website</label>
+                        <input type="url" class="form-control" id="vendor_url" placeholder="Vendor Website" ng-model="coupon.vendor_url">
                      </div>
                       <div class="form-group">
-                        <label for="vendor_url"> Website</label>
-                        <input type="url" class="form-control" id="vendor_url" placeholder=" Vendor Website" ng-model="coupon.vendor_url">
-                     </div>
-                      <div class="form-group">
-                        <label for="vendor_phone"> Phone</label>
-                        <input type="tel" class="form-control" id="vendor_phone" placeholder=" Vendor Phone" ng-model="coupon.vendor_phone">
-                     </div>
-                  
-                    
+                        <label for="title">Vendor Phone</label>
+                        <input type="tel" class="form-control" id="vendor_phone" placeholder="Vendor Phone" ng-model="coupon.vendor_phone">
+                     </div> 
 
                       <div class="form-group">
-                        <label> Service</label>  
+                        <label>Service</label>  
                         <select class="form-control" ng-model="coupon.category">
                           <option> </option>
                           <option>Service</option>
@@ -75,15 +51,33 @@
                           <option>Shopping</option>
                           <option>Attraction</option>
                         </select>                                      
-                    </div>
-                                        
+                      </div>
+                      <div class="form-group">
+                        <label for="expiration">Expiration Date</label>
+                        <input type="date" class="form-control" id="expiration" placeholder="Expiration Date"  required >
+                      </div>
+                     <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="coupon.active"> Coupon is Active
+                        </label>
+                      </div>
+                        <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="coupon.premium"> Premium Listing
+                        </label>
+                      </div>  
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="coupon.expires"> Coupon Expires
+                        </label>
+                      </div>                                         
                     <div class="form-group">
                         <button class="btn btn-primary" ng-click="saveCoupon()">
-                            Duplicate
+                            Duplicate Coupon
                         </button>
-                        <a class="btn btn-danger" ui-sref="home">
+                        <button class="btn btn-danger" ui-sref="home">
                             Cancel
-                        </a>                       
+                        </button>                       
                     </div>
                 </div>                              
             </form>
@@ -93,11 +87,10 @@
 
     <div class="row" id="addAddress">
         <div class="col-md-12">
-            <h3>  Locations </h3>
             <div>
                  <google-places location=location places=places coupon=coupon></google-places>
             </div>
-            <h4 ng-show="coupon.locations.length>0">Locations</h4>
+            <h4 ng-show="coupon.locations.length>0">Coupon Locations</h4>
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="place in coupon.locations">
                     <a href="{{place.url}}" target="_blank">
@@ -114,7 +107,6 @@
 
 
     <div class="row" id="fileUpload">
-           <h3> Logo </h3>
             <form action="" class="dropzone" dropzone="" id="dropzone">
                 <div class="dz-default dz-message">
                 </div>
@@ -126,9 +118,18 @@
                 Dropzone.autoDiscover = false;
             </script>
     </div>
-    
-    <div class="row">
-        <img ng-src="/uploads/{{coupon.img}}"/>
-    </div>
 
+
+    <!--
+    <div class="row">
+        <div class="col-md-12">
+            <small>{{coupon}}</small>
+            <h3>{{filename}}</h3>
+        </div>
+        <div class="col-md-12" ng-show="coupon.hasImage" style="margin:auto">
+            <p>Preview</p>
+            <img ng-src="uploads/{{coupon.img}}" class="img-responsive preview" />
+        </div>
+    </div>
+    -->
 <!-- End of ui-view -->

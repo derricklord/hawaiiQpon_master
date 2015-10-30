@@ -4,10 +4,11 @@ var Vendor = require('../vendor/vendor.model');
 var ObjectId = mongoose.Schema.ObjectId;
 
 var couponSchema = new mongoose.Schema({
-  title:  String,
-  desc: String,
-  desc2: String,
-  owner: {type: ObjectId, ref: 'User'},   
+  title:  String, //Offer
+  desc: String, //Details
+  desc2: String, //Disclaimer
+  owner: {type: ObjectId, ref: 'User'}, 
+  //vendorInfo: {type: ObjectId, ref: 'Vendor'},  
   expiration: Date,
   hasExpiration: Boolean,
   created_on: Date, 
@@ -19,7 +20,9 @@ var couponSchema = new mongoose.Schema({
   promo_code: String,
   premium: Boolean,
   vendor: String,
-  vendorInfo: {type: ObjectId, ref: 'Vendor'},
+  vendor_url: String,
+  vendor_phone: String,
+  vendor_logo: String,
   locations: [
       {
         url:String,

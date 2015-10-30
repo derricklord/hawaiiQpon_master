@@ -20,6 +20,22 @@ router.get('/',  function(req, res){
     });
 });
 
+//Show my Vendors
+router.get('/my', util.ensureAuthenticated, function(req, res){
+    Vendor.find()
+    .populate('owner')
+    .where({owner: req.user})
+    .exec(function(err, vendors) { 
+        res.send(vendors)
+    });
+});
+
+// Upload Vendor Logo
+router.get('/upload', function(req, res){
+    console.log('Uploading logo');
+    res.send({message:'Logo Uploaded!'});
+});
+
 
 // Find Vendor by id.
 router.get('/:id', util.ensureAuthenticated, function(req, res) {

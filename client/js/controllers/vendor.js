@@ -20,7 +20,7 @@
         
         
         //Dropzone Configuration
-        $scope.showDropzone = false;
+        //$scope.showDropzone = false;
         $scope.fileAdded = false;
         $scope.partialDownloadLink = 'http://localhost:3000/uploads/';
         $scope.filename = '';
@@ -35,8 +35,8 @@
 
         $scope.reset = function() {
             $scope.resetDropzone();
-            $scope.coupon.img = '';
-            $scope.coupon.hasImage = false;
+            $scope.vendor.logo = '';
+            $scope.filename = '';
         };
         
         //Save Vendor
@@ -50,6 +50,7 @@
                 })
         }
         
+        /*
         function init(){
             Vendors.getVendors()
                 .success(function(data){
@@ -62,5 +63,6 @@
         };
         
         init();
+        */
     }
 })();

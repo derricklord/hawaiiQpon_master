@@ -7,7 +7,7 @@ var vendorSchema = new mongoose.Schema({
 	website: String,
 	phone: String,
 	logo: String,
-	owner: {type: ObjectId, ref: 'User'},
+	owner: {type: ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Vendor', vendorSchema);

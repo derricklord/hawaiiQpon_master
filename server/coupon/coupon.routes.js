@@ -23,7 +23,8 @@ router.get('/all', function(req, res){
 //Show all Coupons
 router.get('/', function(req, res){
     Coupon.find({})
-    .populate('owner')
+    .populate('vendorinfo')
+    //.populate('vendorinfo')
     .exec(function(err, coupons) { 
         res.send(coupons)
     });
@@ -39,6 +40,7 @@ router.get('/upload', function(req, res){
 router.get('/:id', function(req, res) {
     Coupon.findOne({_id: req.params.id})
         .populate('owner')
+        .populate('vendorinfo')
         .exec(function(err, coupon) {
             res.send(coupon)
         });    
@@ -58,20 +60,21 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     coupon.created_on = Date.now();
     coupon.expiration = req.body.expiration;    
     coupon.hasImage = req.body.hasImage;
-    
-    if(req.body.vendorInfo){
-        coupon.vendorInfo = req.body.vendorInfo;
-    }
-    
-    if(coupon.hasImage){
-        coupon.img = req.body.img;
-    }
-    
+    coupon.img = req.body.img;
+    coupon.active = req.body.active;
     coupon.resource_url = req.body.resource_url;
     coupon.premium = req.body.premium;
     coupon.promo_code = req.body.code;
     coupon.vendor = req.body.vendor;
+    coupon.vendor_url = req.body.vendor_url;
+    coupon.vendor_phone = req.body.vendor_phone;
+    /*
+    if(req.body.vendorInfo){
+        coupon.vendorInfo = req.body.vendorInfo;
+    }
+    */
     
+ 
     if(req.body.locations){
         var locations = req.body.locations;
         locations.forEach(function(location){
@@ -88,6 +91,8 @@ router.post('/', util.ensureAuthenticated, function(req, res) {
     }
     
   coupon.save(function(err) {
+    //console.log('Saving Coupon...');
+    //console.log(coupon);
     res.send({ coupon: coupon });
   });
 
