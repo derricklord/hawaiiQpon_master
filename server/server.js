@@ -23,7 +23,7 @@ var vendorRoutes = require('./vendor/vendor.routes');
 
 //Initialize Server
 var app = express();
-var production = false;
+var production = true;
 
 var done = false;
 var filename = '';
