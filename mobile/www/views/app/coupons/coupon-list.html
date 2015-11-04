@@ -1,6 +1,10 @@
 <ion-view view-title="Coupon Listing" class="shop-sale-view">
   <ion-content>
-        <ion-list>     
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
+        </ion-refresher>    
+        <ion-list class="list animate-fade-slide-in-right"> 
+
+          <!--    
             <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
                 <div>
                   <span style="width:12%; float:left;">
@@ -36,8 +40,23 @@
                 <p>{{coupon.title}} </p>
                 <p>Distance: {{coupon.distance}} mile(s)</p>
                <button class="button button-outline button-balanced" ng-click="openOffer(coupon)">Redeem</button>
-            </ion-item>        
-
+            </ion-item>  
+            -->      
+            <a class="item item-thumbnail-left" href="#"  ng-click="openOffer(premium)" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
+              <img src="{{premium.img}}" style="height:auto; width:50%;">
+              <h3>{{premium.vendor}} <span class="ad_icon">Ad</span></h3>
+              <p>{{premium.title}} </p>
+              <p>Distance: {{coupon.distance}} mile(s)</p>  
+            </a>              
+ 
+              
+            <a class="item item-thumbnail-left" href="#"  ng-click="openOffer(coupon)" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
+              <!--<img src="{{coupon.icon}}">-->
+              <img src="{{coupon.img}}" style="height:auto; width:50%;">
+              <h3>{{coupon.vendor}} </h3>
+              <p>{{coupon.title}}</p>
+              <p>Distance: {{coupon.distance}} mile(s)</p>
+            </a>           
             
                            
         </ion-list>  

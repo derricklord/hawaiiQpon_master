@@ -3,7 +3,7 @@
     
     angular.module('your_app_name')
       .factory('Coupons', function($http) {
-        var host = 'https://hawaiiqpon.lordconsulting.net';
+        var host = 'http://hawaiiqpon.lordconsulting.net';
         return {
           getCoupon: function(id) {
             return $http.get(host +'/api/coupons/'+id);

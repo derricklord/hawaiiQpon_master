@@ -59,7 +59,6 @@ angular.module('your_app_name', [
       }
     }
   })
-
   .state('app.profile', {
     abstract: true,
     url: '/profile/:userId',
@@ -220,5 +219,9 @@ angular.module('your_app_name', [
   $urlRouterProvider.otherwise('/facebook-sign-in');
   // $urlRouterProvider.otherwise('/app/feed');
 })
-
+.value('Settings', {
+   'searchRadius': '25',
+   'location': '',
+   'useZipCode': true
+})
 ;

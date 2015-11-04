@@ -1,5 +1,5 @@
 angular.module('your_app_name.app.controllers')
-.controller('couponCtrl', function($scope, ShopService, Coupons, $cordovaGeolocation, $ionicLoading, $ionicModal, AuthService, $ionicBackdrop, $state) {
+.controller('couponCtrl', function($scope, Coupons, Settings,  $cordovaGeolocation, $ionicLoading, $ionicModal, AuthService, $ionicBackdrop, $state) {
 
   //this will represent our logged user
   var user = {
@@ -27,10 +27,17 @@ angular.module('your_app_name.app.controllers')
   $scope.offer = {};
   $scope.setFilter = setFilter;
 
+
+
   $scope.slider = {};
-  $scope.slider.radius = 25;
+  $scope.slider.radius = Settings.searchRadius;
   $scope.slider.radiusStr = '';
   $scope.slider.listView =  true; 
+  
+ 
+  
+  
+  
    
   //Show Loading Message
   $ionicLoading.show({
@@ -96,14 +103,14 @@ angular.module('your_app_name.app.controllers')
                         location.icon = '/img/markers/General.png';
                       }
                       
-                      
+                      console.log(Settings.searchRadius);
                       $scope.allCoupons.push(location);
                       
-                      if(location.distance < $scope.slider.radius && !location.premium){
+                      if(location.distance <= parseInt(Settings.searchRadius) && !location.premium){
                              $scope.coupons.push(location);
                       }
 
-                      if(location.distance < $scope.slider.radius && location.premium){
+                      if(location.distance  <= parseInt(Settings.searchRadius) && location.premium){
                              $scope.premiumCoupons.push(location);
                       }                     
                   });
@@ -138,7 +145,12 @@ angular.module('your_app_name.app.controllers')
       });
    };
 
-
+     $scope.refresh = function(){
+      $scope.coupons = [];
+      $scope.premiumCoupons = [];
+       $scope.$broadcast('scroll.refreshComplete');
+       $scope.updateCoupons();
+     }
  
     $scope.openOffer = function(coupon) {
       $scope.offer = coupon;
@@ -173,7 +185,14 @@ angular.module('your_app_name.app.controllers')
       // Execute action
     });
     
-
+    $scope.$on('mapInitialized', function(evt, evtMap){
+        map = evtMap;   
+          $scope.moveMap = function(location){
+            map.setZoom(9);
+            map.setCenter(location);
+            
+          }       
+      });
     
   function setFilter(filter){
     $scope.filter = filter;
@@ -199,5 +218,6 @@ angular.module('your_app_name.app.controllers')
  
  
  
-  $scope.init();   
+  $scope.init(); 
+   
 })

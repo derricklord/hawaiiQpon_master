@@ -17,7 +17,16 @@ angular.module('your_app_name.app.controllers', [])
   AuthService.saveUser(user);
   $scope.loggedUser = user;
 })
-
+.controller('SettingsCtrl', function($scope, $stateParams, Settings){
+  $scope.data = {
+    searchRadius: Settings.searchRadius,
+  }
+  
+  $scope.$watch('data', function(){
+    console.info('A Value has changed');
+    Settings.searchRadius = $scope.data.searchRadius;
+  }, true); 
+})
 
 .controller('ProfileCtrl', function($scope, $stateParams, PostService, $ionicHistory, $state, $ionicScrollDelegate) {
 
@@ -204,8 +213,16 @@ angular.module('your_app_name.app.controllers', [])
   //$scope.paymentDetails;
 })
 
-.controller('SettingsCtrl', function($scope, $ionicModal) {
-
+.controller('SettingsCtrl', function($scope, $ionicModal, Settings) {
+  $scope.data = {
+    searchRadius: Settings.searchRadius,
+  }
+  
+  $scope.$watch('data', function(){
+    console.info('A Value has changed');
+    Settings.searchRadius = $scope.data.searchRadius;
+  }, true); 
+  
   $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {
     scope: $scope,
     animation: 'slide-in-up'

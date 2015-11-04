@@ -1,0 +1,14 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    
+   <ion-item class="range range-positive">
+     <span>1</span>
+     <input type="range" name="searchRadius" min="1" max="100" ng-model="data.searchRadius">
+     <span>10</span>
+   </ion-item>
+
+  <ion-item>
+    <p>Radius: {{data.searchRadius}}</p>
+  </ion-item>   
+  </ion-content>
+</ion-view>

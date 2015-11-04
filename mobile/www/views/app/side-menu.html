@@ -19,7 +19,7 @@
         <div multi-bg="">
         <div class="row menu-top-options">
           <div class="col col-top">
-            
+            {{slider.searchRadius}}
             <label class="toggle toggle-balanced" style="margin-left: 100px;">
               <input type="checkbox" ng-model="slider.listView">
               <div class="track">
@@ -64,7 +64,9 @@
                <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('Shopping')">
                 <i class="menu-icon icon ion-cash menu-color"></i>
                 <h2 class="side-menu-text">Shopping</h2>
-              </ion-item>                       
+              </ion-item>
+               
+                                     
             </ion-list>
             
             <ion-list ng-if="!slider.listView">

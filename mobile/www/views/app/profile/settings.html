@@ -18,6 +18,12 @@
         More
       </div>
       -->
+      <ion-item class="range range-positive">
+        <span>1</span>
+        <input type="range" name="searchRadius" min="1" max="100" ng-model="data.searchRadius">
+        <span>100</span>
+      </ion-item>
+      
       <a class="item item-icon-left settings-option" ng-click="showTerms()">
         <i class="icon ion-ios-information-outline"></i>
         Terms of Service
@@ -34,6 +40,10 @@
         <i class="icon ion-ios-close-outline"></i>
         Sign Out
       </a>
+      
+      <ion-item>
+        <p>Search Radius: {{data.searchRadius}}</p>
+      </ion-item>         
     </div>
   </ion-content>
 </ion-view>
