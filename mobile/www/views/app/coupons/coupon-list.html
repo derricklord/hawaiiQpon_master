@@ -4,7 +4,7 @@
             <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
                 <div>
                   <span style="width:12%; float:left;">
-                      <img ng-src="/img/markers/{{premium.category}}.png"/>
+                      <img src="{{premium.icon}}"/>
                   </span>
                   <span style="width:88%; float:left;">
                       <h2 class="list-text">{{premium.vendor}}</h2>
@@ -22,7 +22,7 @@
             <ion-item class="item-button-right" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
                 <div>
                   <span style="width:12%; float:left; ">
-                      <img ng-src="/img/markers/{{coupon.category}}.png"/>
+                      <img src="{{coupon.icon}}"/>
                   </span>
                   <span style="width:88%; float:left;">
                       <h2 class="list-text">{{coupon.vendor}}</h2>

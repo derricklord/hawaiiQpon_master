@@ -14,9 +14,15 @@
               <div ng-repeat="coupon in coupons | filter:filter">
                   <marker id="{{coupon._id}}" 
                           position="{{coupon.loc.lat}}, {{coupon.loc.long}}" 
-                          icon="/img/markers/{{coupon.category}}.png" on-click="openMapOffer(event, coupon)">
+                          icon="{{coupon.icon}}" on-click="openMapOffer(event, coupon)">
                   </marker>                                         
-              </div>           
+              </div>    
+               <div ng-repeat="coupon in premiumCoupons | filter:filter">
+                  <marker id="{{coupon._id}}" 
+                          position="{{coupon.loc.lat}}, {{coupon.loc.long}}" 
+                          icon="{{coupon.icon}}" on-click="openMapOffer(event, coupon)">
+                  </marker>                                         
+              </div>                       
           </map>
   </ion-content>
 </ion-view>

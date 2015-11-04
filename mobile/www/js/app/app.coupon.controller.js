@@ -89,6 +89,7 @@ angular.module('your_app_name.app.controllers')
                       location.vendor_url = coupon.vendor_url;
                       location.vendor_phone = coupon.vendor_phone;
                       location.promo_code = coupon.promo_code;
+                      
                       if(coupon.img){
                           location.img = host + '/' + coupon.img;
                       }else{
@@ -101,10 +102,13 @@ angular.module('your_app_name.app.controllers')
                       
                       if(coupon.category){
                         location.category = coupon.category;
+                        location.icon = '/img/markers/' + coupon.category + '.png';
                       }else{
-                        location.category = 'General'
+                        location.category = 'General';
+                        location.icon = '/img/markers/General.png';
                       }
                       
+                      /*
                       switch(coupon.category){
                           case 'Attraction':
                             location.icon = 'ion-map';
@@ -124,6 +128,8 @@ angular.module('your_app_name.app.controllers')
                           default:
                             location.icon = 'ion-location';
                       }
+                      */
+                      
                       $scope.allCoupons.push(location);
                       
                       if(location.distance < $scope.slider.radius && !location.premium){
@@ -171,7 +177,7 @@ angular.module('your_app_name.app.controllers')
     $scope.openOffer = function(coupon) {
       $scope.offer = coupon;
       $scope.modal.show();
-      console.log($scope.offer);
+      //console.log($scope.offer);
     };
     
 
