@@ -13,7 +13,7 @@ angular.module('your_app_name.app.controllers')
   
   var map;
   var host = 'http://hawaiiqpon.lordconsulting.net/uploads';
-  var link = "window.open(" +  + "', '_system', 'location=yes'); return false;"
+
 
   //save our logged user on the localStorage
   AuthService.saveUser(user);
@@ -58,18 +58,6 @@ angular.module('your_app_name.app.controllers')
         $state.go('app.shop.popular');
   };
 
-  $scope.updateRadius = function(){
-       $scope.slider.radius = parseInt($scope.slider.radiusStr);
-       var coupons = $scope.allCoupons;
-
-       coupons.forEach(function(coupon){
-         if(coupon.distance <= $scope.slider.radius || coupon.distance < 2){
-           $scope.filteredCoupons.push(coupon);      
-         }
-       });
-      $scope.coupons = $scope.filteredCoupons;
-  };
-  
   
   $scope.updateCoupons = function(){
         Coupons.getCoupons().then(function(coupons){   
@@ -108,27 +96,6 @@ angular.module('your_app_name.app.controllers')
                         location.icon = '/img/markers/General.png';
                       }
                       
-                      /*
-                      switch(coupon.category){
-                          case 'Attraction':
-                            location.icon = 'ion-map';
-                            break;
-                          case 'Service':
-                            location.icon = 'ion-person-stalker';
-                            break;
-                          case 'Dining':
-                            location.icon = 'ion-wineglass';
-                            break;
-                          case 'Entertainment':
-                            location.icon = 'ion-music-note';
-                            break;
-                          case 'Shopping':
-                            location.icon = 'ion-cash';
-                            break;
-                          default:
-                            location.icon = 'ion-location';
-                      }
-                      */
                       
                       $scope.allCoupons.push(location);
                       
@@ -141,8 +108,7 @@ angular.module('your_app_name.app.controllers')
                       }                     
                   });
               });
-               //console.log($scope.coupons);
-               //console.log($scope.premiumCoupons);
+
               $ionicLoading.hide();   
         });
   };
@@ -177,7 +143,6 @@ angular.module('your_app_name.app.controllers')
     $scope.openOffer = function(coupon) {
       $scope.offer = coupon;
       $scope.modal.show();
-      //console.log($scope.offer);
     };
     
 
@@ -210,25 +175,6 @@ angular.module('your_app_name.app.controllers')
     
 
     
-    $scope.$on('mapInitialized', function(evt, evtMap){
-        map = evtMap;
-        //console.log(map);
-        $scope.placeMarker = function(e) {
-          var marker = new google.maps.Marker({position: e.latLng, map: map});
-          map.panTo(e.latLng);
-          //console.log(e.latLng.lat() + ' , ' + e.latLng.lng());
-        }
-        
-        $scope.moveMap = function(location){
-          map.setZoom(9);
-          map.setCenter(location);
-          
-        }       
-    });
-    
-
-  
-  
   function setFilter(filter){
     $scope.filter = filter;
     console.log($scope.filter);
