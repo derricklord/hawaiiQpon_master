@@ -1,4 +1,7 @@
 //Load Userland npm Modules
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -11,6 +14,10 @@ var request = require('request');
 
 var util = require('./util/lib.js');
 var config = require('./config');
+var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
 
 //Load Custom Routes
 var couponRoutes = require('./coupon/coupon.routes');
@@ -30,6 +37,7 @@ var filename = '';
 
 if(production){
   var port = process.env.PORT || 80;
+  var sslport = process.env.SSLPORT || 443;
   //Initialize Database
   mongoose.connect(config.MONGO_URI);
   mongoose.connection.on('error', function() {
@@ -37,6 +45,7 @@ if(production){
   }); 
 }else{
   var port = process.env.PORT || 3000;
+  var sslport = process.env.SSLPORT || 8443;
   
   //Initialize Database
   mongoose.connect(config.MONGO_URI);
@@ -86,6 +95,19 @@ app.use('/api/users', userRoutes);
 app.use('/', commonRoutes);
 
 
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(port, function(){
+  console.log('Server listening on port ' + port);
+});
+
+httpsServer.listen(sslport, function(){
+  console.log('Secure Server listening on port ' + sslport);
+});
+
+/*
 app.listen(port, function(){
     console.log('Server listening on port ' + port);
 });
+*/
