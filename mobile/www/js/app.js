@@ -127,6 +127,15 @@ angular.module('your_app_name', [
     }
   })
 
+  .state('app.coupon.map', {  //Coupon Map
+    url: "/map",
+    views: {
+      'coupon-map': {
+        templateUrl: "views/app/coupons/coupon-map.html",
+        controller: 'couponCtrl'
+      }
+    }
+  })
 
   .state('app.shop.popular', {  //Coupon Map
     url: "/popular",
@@ -220,8 +229,8 @@ angular.module('your_app_name', [
   // $urlRouterProvider.otherwise('/app/feed');
 })
 .value('Settings', {
-   'searchRadius': '25',
-   'location': '',
-   'useZipCode': true
+   listView:true,
+   searchRadius: '25',
+   setFilter: ''
 })
 ;

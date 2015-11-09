@@ -2,82 +2,23 @@
   <ion-content>
         <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
         </ion-refresher>    
-        <ion-list class="list animate-fade-slide-in-right"> 
-
-          <!--    
-            <ion-item class="item-button-right" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
-                <div>
-                  <span style="width:12%; float:left;">
-                      <img src="{{premium.icon}}"/>
-                  </span>
-                  <span style="width:88%; float:left;">
-                      <h2 class="list-text">{{premium.vendor}}</h2>
-                      <h3> {{premium.category}}</h3>
-                  </span>
-                </div>
-                <div>
-                  <p>{{premium.title}} </p>
-                  <p>Distance: {{premium.distance}} mile(s)</p>
-                </div>
-                <p>{{premium.title}} </p>
-                <p>Distance: {{premium.distance}} mile(s)</p>
-               <button class="button button-outline button-balanced" ng-click="openOffer(premium)">Redeem</button>
-            </ion-item>            
-            <ion-item class="item-button-right" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
-                <div>
-                  <span style="width:12%; float:left; ">
-                      <img src="{{coupon.icon}}"/>
-                  </span>
-                  <span style="width:88%; float:left;">
-                      <h2 class="list-text">{{coupon.vendor}}</h2>
-                      <h3> {{coupon.category}}</h3>
-                  </span>
-                </div>
-                <div>
-                  <p>{{coupon.title}} </p>
-                  <p>Distance: {{coupon.distance}} mile(s)</p>
-                </div>
-                <p>{{coupon.title}} </p>
-                <p>Distance: {{coupon.distance}} mile(s)</p>
-               <button class="button button-outline button-balanced" ng-click="openOffer(coupon)">Redeem</button>
-            </ion-item>  
-            -->      
+        <ion-list class="list">     
             <a class="item item-thumbnail-left" href="#"  ng-click="openOffer(premium)" ng-repeat="premium in premiumCoupons | filter:filter | orderBy:'distance'">
-              <img src="{{premium.img}}" style="height:auto; width:50%;">
+              <img ng-src="{{premium.img}}" style="height:auto; width:50%;">
               <h3>{{premium.vendor}} <span class="ad_icon">Ad</span></h3>
               <p>{{premium.title}} </p>
               <p>Distance: {{coupon.distance}} mile(s)</p>  
             </a>              
- 
-              
+   
             <a class="item item-thumbnail-left" href="#"  ng-click="openOffer(coupon)" ng-repeat="coupon in coupons | filter:filter | orderBy:'distance'">
               <!--<img src="{{coupon.icon}}">-->
-              <img src="{{coupon.img}}" style="height:auto; width:50%;">
+              <img ng-src="{{coupon.img}}" style="height:auto; width:50%;">
               <h3>{{coupon.vendor}} </h3>
               <p>{{coupon.title}}</p>
               <p>Distance: {{coupon.distance}} mile(s)</p>
-            </a>           
-            
-                           
+            </a>                  
         </ion-list>  
   </ion-content> 
 </ion-view>
 
 
-   <!--
-    <div class="row shop-products-narrow-cards-outer">
-      <div ng-repeat="coupon in coupons" class="col col-50 shop-product-narrow-card" ui-sref="app.product-detail({productId: product._id})">
-        <div class="list card">
-          <div class="item item-image">
-            <pre-img ratio="_1_1" helper-class="main-image">
-              <img ng-src="{{product.picture}}" spinner-on-load>
-            </pre-img>
-          </div>
-          <div class="item item-body">
-            <h2 class="card-title">{{product.title}}</h2>
-            <p class="card-description"><b>${{product.price}}</b> - {{product.description}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    -->

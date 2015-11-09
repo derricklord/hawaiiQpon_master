@@ -19,7 +19,6 @@
         <div multi-bg="">
         <div class="row menu-top-options">
           <div class="col col-top">
-            {{slider.searchRadius}}
             <label class="toggle toggle-balanced" style="margin-left: 100px;">
               <input type="checkbox" ng-model="slider.listView">
               <div class="track">
@@ -28,15 +27,13 @@
             </label>     
                       
             <ion-list ng-if="slider.listView">
-              <div class="list">
-                <!--
-                <div class="item range range-balanced">
-                  <i class="icon ion-ios-sunny-outline"></i>
-                  <input type="range" name="radius" min="1" max="100"  ng-model="slider.radiusStr" ng-blur="updateRadius()">
-                  <i class="icon ion-ios-sunny"></i>
-                </div>
-                -->
-              </div>              
+              <h4 style="margin-left:20px;">Search Radius: {{slider.searchRadius}}</h4>
+              <ion-item class="range range-balanced">
+                <span>1</span>
+                <input type="range" name="searchRadius" min="1" max="100" ng-model="slider.searchRadius">
+                <span>100</span>
+              </ion-item>     
+                      
               <ion-item ui-sref-active="active" class="item-icon-left" menu-close ng-click="setFilter('')" >
                 <i class="menu-icon icon ion-ios-pricetags menu-color"></i>
                 <h2 class="side-menu-text">All Coupons</h2>
@@ -93,11 +90,13 @@
             </ion-list>                     
           </div>
         </div>
+
         <div class="row menu-bottom-options">
           <div class="col col-bottom">
+            <!--
             <ion-list>
               <ion-item class="user-item" menu-close ui-sref="app.settings">
-                <!-- We need a wrapper with width set for the preload image directive -->
+            
                 <div class="user-image-outer">
                   <pre-img ratio="_1_1" helper-class="rounded-image">
                     <img class="user-image" ng-src="{{loggedUser.picture}}" spinner-on-load>
@@ -107,6 +106,7 @@
                 <i class="menu-icon icon ion-gear-b menu-color" style="float:right;"></i>
               </ion-item>
             </ion-list>
+            -->
           </div>
         </div>
       </div>

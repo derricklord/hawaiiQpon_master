@@ -15,27 +15,33 @@ angular.module('your_app_name.app.controllers')
   var host = 'http://hawaiiqpon.lordconsulting.net/uploads';
 
 
-  //save our logged user on the localStorage
+  //Controller Properties
   AuthService.saveUser(user);
   $scope.loggedUser = user;
   $scope.allCoupons = [];
   $scope.filteredCoupons = [];
   $scope.coupons = [];
   $scope.premiumCoupons = [];
- 
-  
   $scope.offer = {};
+  
+  //Controller Methods
   $scope.setFilter = setFilter;
 
+  console.log(Settings);
 
+  $scope.slider = {
+    searchRadius: Settings.searchRadius,
+    setFilter: Settings.setFilter,
+    listView: Settings.listView
+  };
 
-  $scope.slider = {};
-  $scope.slider.radius = Settings.searchRadius;
-  $scope.slider.radiusStr = '';
-  $scope.slider.listView =  true; 
   
- 
-  
+  $scope.$watch('slider', function(){
+    console.info('A Value has changed');
+    Settings.searchRadius = $scope.slider.searchRadius;
+    Settings.setFilter = $scope.slider.setFilter;
+    Settings.listView = $scope.slider.listView;
+  }, true);
   
   
    
@@ -103,7 +109,7 @@ angular.module('your_app_name.app.controllers')
                         location.icon = '/img/markers/General.png';
                       }
                       
-                      console.log(Settings.searchRadius);
+                      
                       $scope.allCoupons.push(location);
                       
                       if(location.distance <= parseInt(Settings.searchRadius) && !location.premium){
@@ -139,6 +145,7 @@ angular.module('your_app_name.app.controllers')
           // error
       })
       .then(function(){
+          console.log($scope.slider);
           $scope.updateCoupons();
       }, function(err){
             // error
